@@ -1,16 +1,3 @@
----
-layout:     post
-title:     "Merlin:中文统计参数语音合成实战"
-subtitle:  "持续更新中"
-date:       2017-07-02
-author:     "Jackie"
-header-img: "img/post-bg-2015.jpg"
-tags:
-   - merlin
-   - spss
-   - 中文统计参数语音合成
----
-
 # Merlin:中文统计参数语音合成实战
 
 本文目标是详细解释如何基于开源Merlin项目搭建中文统计参数语音合成系统，但笔者目前尚未实现中文语音合成，实现中文语音合成系统将作为笔者的毕业设计，本文记录了笔者的进展并且会持续更新直到实现中文语音合成为止。  
@@ -29,10 +16,8 @@ tags:
  * [英文语音合成实现](#英文语音合成实现)
  * [中文语音合成理论研究](#中文语音合成理论研究)
  * [中文语音合成实现](#中文语音合成实现)
- * [参考文献](#参考文献)
+ * [附录](#附录)
  * [术语表](#术语表)
- * [扩展](#扩展)
- * [TODO List](#todo-list)
  * [联系作者](#联系作者)
 
 # 目前研究进展
@@ -298,40 +283,7 @@ Merlin自带英文语音合成，所以实现起来相对简单。你只需要�
 
 由于中文语音合成系统复杂，工作琐碎繁多，需要花费大量的时间，在有限的一个月时间里，学习语音合成的基础知识占据了大多数的时间，因此笔者在提交报告为止尚未实现中文语音合成，在这里简要谈谈我们已经完成的步骤以及后续所需要做的工作。
 
-## 1 语料库
-
-目前网络上还没有可以免费使用的用于语音合成的中文语料库，用于语音合成的语料库通常需要使用一个人声音大约30小时可以训练出比较令人满意的效果。但如果仅用于测试代码可以使用语音识别的语料库，如[清华大学语料库](http://www.cslt.org/news.php?title=News-20160204)，该语料库时长虽然有30小时，但是由十几个人声的资料组成。
-
-除了上面谈到的中文语音公开数据集，还有下面两个数据集
-
- - gale_mandarin: 中文新闻广播数据集(LDC2013S08, LDC2013S08)
- - hkust: 中文电话数据集(LDC2005S15, LDC2005T32)
-
-## 2 语料库的规范处理
-
-不同的语料库中的格式不尽相同，因此，首先要对语料库中的标记数据进行规范化，变成FrontEnd可以采用的数据，merlin中可以采用的格式如下
-文件一：
-
-```
-0.119 SIL
-0.398 jiang1
-0.621 hai2
-0.829 shi5
-1.090 lao3
-1.124 SIL
-1.229 de5
-1.501 la4
-1.713 SIL
-```
-
-文件二：
-
-```
-( casia_00001 "jiang1 hai2 shi5 lao3 de5 la4 yi2 wei4 jiao1 she4 hui4 xue2 de5 lao3 shi1 da3 le5 ge4 you1 mo4 de5 bi3 yu4 shuo1" )
-( casia_00002 "yi1 qian1 si4 bai3 er4 shi2 yi1 yu3 si1 bu4 xi1 xi1 sheng1 zi4 you2 yi3 tu2 gou3 an1 de5 ren2" )
-```
-
-## 3 中文FrontEnd
+## 中文FrontEnd
 
 考虑基于Festvox自行开发中文的FrontEnd，其中结合上述的中文语音合成理论研究以及网络上开源的中文文本分析器。这一步最为困难。
 
@@ -343,65 +295,14 @@ http://nlp.fudan.edu.cn/demo/
 http://thulac.thunlp.org/demo  
 http://www.ltp-cloud.com/demo/  
 
-### (2) 中文文本分析与韵律处理论文集
-韵律含义详见论文：汉语语音合成系统及其韵律调整  
-韵橼特征也称超膏段特征,它包括了言语特征中除了音色的其余三个特征:音高、音强和时长。在声学参数上具体袭现为基频(pitch)、能量(energy)和音段时长(duration)随时间的变化。汉语中我们把它归纳到重音、时长、语调和停顿等方面。
- * [基于HMM的可训练中文语音合成(2006 被引量42)][1]
- * [微软研究院的论文An HMM-Based Mandarin Chinese Text-To-Speech System][2]
- * [**汉语语音合成系统及其韵律调整**][3] 硕士学位论文
- * [语音合成中的语言学计算模型:现状及展望][4] 这个讲了不少关于文本处理的情况
- * [**基于统计韵律模型的汉语语音合成系统的研究**][5]
- * [韵律相关的汉语语音识别系统研究][6]
- * [汉语语音合成系统中激励源和声调模型研究][7]
- * [汉语TTS系统中的文本分析及韵律研究][8] 硕士学位论文-山东大学
- * [汉语韵律切分的语音学和语言学线索][9]
- * [汉语普通话语音合成语料库TH—CoSS的建设和分析][10] 清华大学
- * [语法信息与韵律结构的分析与预测][11] 清华大学
- * [神经网络与汉语TTS韵律模型][12]清华大学
- * [一个普通话文语转换系统中的韵律模型][13]哈工大
- * [中文TTS引擎中的分词词典和标记语言研究
- * Research of Segmentation Dictionary and Markup Language in Chinese TTS Engine][14]
+# 附录
 
-
-[1]:https://wenku.baidu.com/view/38d70f01b52acfc789ebc917.html
-[2]:http://download.springer.com/static/pdf/712/bok%253A978-3-540-49666-3.pdf?originUrl=https%3A%2F%2Flink.springer.com%2Fbook%2F10.1007%2F11939993&token2=exp=1499085683~acl=%2Fstatic%2Fpdf%2F712%2Fbok%25253A978-3-540-49666-3.pdf%3ForiginUrl%3Dhttps%253A%252F%252Flink.springer.com%252Fbook%252F10.1007%252F11939993*~hmac=14f30868091a56c098e9fda2b71e69339100b3611ccaae9e263d54f610a510dc#page=244
-[3]:https://wenku.baidu.com/view/2bec5802bed5b9f3f90f1cfd.html
-[4]:https://wenku.baidu.com/view/495aac19ff00bed5b9f31d81.html
-[5]:https://wenku.baidu.com/view/0041d21da76e58fafab003b9.html
-[6]:https://wenku.baidu.com/view/2cbcb1fac8d376eeaeaa3195.html?re=view
-[7]:https://wenku.baidu.com/view/ea6332768e9951e79b892715.html?re=view
-[8]:https://wenku.baidu.com/view/f0cc65c55fbfc77da269b120.html
-[9]:https://wenku.baidu.com/view/192501d084254b35eefd3429.html
-[10]:https://wenku.baidu.com/view/511e202d915f804d2b16c1e7.html
-[11]:https://wenku.baidu.com/view/ca55fd86b9d528ea81c77925.html
-[12]:http://hcsi.cs.tsinghua.edu.cn/static/Paper/Paper01/200107.pdf
-[13]:https://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwi99oDl2u7UAhWMXLwKHVG0CwsQFggrMAE&url=http%3A%2F%2Fwww.arocmag.com%2Fgetarticle%2F%3Faid%3D9a755786e708d76e&usg=AFQjCNGwOu0Rlc8TKkccdwCq_lIZQZDYGw
-[14]:http://eng.oversea.cnki.net/Kcms/detail/detail.aspx?filename=1013117721.nh&dbcode=CMFD&dbname=CMFD2013
-
-
-# 参考文献
-
-## 1 论文部分
-
-**主要参考论文**
-
+1 参考文献
 范会敏, 何鑫. 中文语音合成系统的设计与实现[J]. 计算机系统应用, 2017(2):73-77.  
 郝东亮, 杨鸿武, 张策,等. 面向汉语统计参数语音合成的标注生成方法[J]. 计算机工程与应用, 2016, 52(19):146-153.  
 Merlin: An Open Source Neural Network Speech Synthesis System   
 [英文](http://ssw9.net/papers/ssw9_PS2-13_Wu.pdf)
 [中文](http://blog.csdn.net/lujian1989/article/details/56008786)
-
-**其他论文**
-
-侯亭武. 基于语料库的中文语音合成技术研究[D]. 华中科技大学, 2015.张德良. 深度神经网络在中文语音识别系统中的实现[D]. 北京交通大学, 2015.蔡明琦. 融合发音机理的统计参数语音合成方法研究[D]. 中国科学技术大学, 2015.车浩. 汉语语音合成韵律预测技术研究[J]. 2015.  
-张斌, 全昌勤, 任福继. 语音合成方法和发展综述[J]. 小型微型计算机系统, 2016, 37(1):186-192.
-
-**相关论文（未读）**
-
- - [基于声韵母基元的嵌入式中文语音合成系统](http://www.speakit.cn/Group/file/Embeded_SP05.pdf)  
- - [Mandarin Singing Voice Synthesis UsingTailored Synthesis Units and Question Sets](https://aclweb.org/anthology/O/O13/O13-5005.pdf)
- - [基于深度神经网络的汉语语音合成的研究](http://www.jsjkx.com/jsjkx/ch/reader/view_abstract.aspx?file_no=20156A018&flag=1)  
- - [孙敬伟. 统计参数语音合成中的关键技术研究](http://159.226.59.140/handle/311008/556)
 
 2 工程实现教程部分
 
@@ -412,7 +313,7 @@ Merlin: An Open Source Neural Network Speech Synthesis System
  - [Festvox教程（利用wav 和标记数据创造label）](http://festvox.org/bsv/)  
  - [speech.zone build-your-own-dnn-voice](http://www.speech.zone/exercises/build-your-own-dnn-voice/)   
 
-3 代码部分
+3 相关软件
 
  - [Merlin语音合成系统 Github](https://github.com/CSTR-Edinburgh/merlin)
  - [Festvox](https://festvox.org)
@@ -420,12 +321,12 @@ Merlin: An Open Source Neural Network Speech Synthesis System
  - HTS
  - SPTK
  - World
+ - Praat语音学软件
 
 4 语音识别/合成基础知识
 
  - [机器学习&数据挖掘笔记_13（用htk完成简单的孤立词识别）](http://www.cnblogs.com/tornadomeet/p/3274078.htmli) 了解语音识别的基础
  - [上下文相关的GMM-HMM声学模型](http://www.cnblogs.com/cherrychenlee/p/6780460.html)
- - [知乎-语音识别的技术原理是什么？](https://www.zhihu.com/question/20398418)
  - A beginners’ guide to statistical parametric speech synthesis[英文](http://www.cstr.ed.ac.uk/downloads/publications/2010/king_hmm_tutorial.pdf)[中文](https://shartoo.github.io/texttospeech/)
  - [语音产生原理与特征参数提取](http://blog.csdn.net/u010451580/article/details/51178190)
  - [台湾-语音信号处理教程（包含了语音合成教程）](http://www.mirlab.org/jang/books/audioSignalProcessing/)
@@ -483,28 +384,5 @@ Merlin: An Open Source Neural Network Speech Synthesis System
  - .utt .utt files are the linguistic representation of the text that Festival outputs（full context training labels)
  - .cfg
 
-# 扩展
-
-### 1 DeepMind基于深度学习的原始语音生成模型－WaveNet  
-[wavenet-generative-model-raw-audio/](https://deepmind.com/blog/wavenet-generative-model-raw-audio/)  
-[中文版](http://www.w2bc.com/article/171751)  
-
-[谷歌WaveNet源码详解](https://zhuanlan.zhihu.com/p/24568596)  
-[A TensorFlow implementation of DeepMind's WaveNet paper](https://github.com/ibab/tensorflow-wavenet)
-
-### 2 [开源中文语音识别](https://github.com/kaldi-asr/kaldi/tree/master/egs/thchs30)
-
-# TODO List
-
- - [ ] 中科院的教程[http://iscslp2016.org/slides.html](http://iscslp2016.org/slides.html)
-
- - [ ] FrontEnd的学习研究
-
- - [ ] 阅读文章：中科院的统计参数语音合成中的关键技术研究 [http://159.226.59.140/handle/311008/556](http://159.226.59.140/handle/311008/556)
-
 # 联系作者
 * Jackiexiao 微信:explorerrr
-* 楚雄 【暂无】
-
-Author: Jackiexiao && 张楚雄
-Data: 20170706
