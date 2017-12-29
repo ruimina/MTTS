@@ -31,6 +31,9 @@
 ## 1.3 论文的结构安排
 # 第二章 统计参数语音合成基础技术综述
 ## 2.1 汉语语言分析
+TODO 这一部分见书《汉语自然语言处理》，等待补充
+2.1.1 汉语拼音方案
+中华人民共和国教育部发布的[《汉语拼音方案》](http://www.moe.edu.cn/s78/A19/yxs_left/moe_810/s230/195802/t19580201_186000.html)
 ## 2.2 隐马尔可夫模型
 ### 2.2.1 隐马尔可夫模型
 ### 2.2.2 HSMM半隐马尔可夫模型 
@@ -75,6 +78,18 @@
 wo3 jiu4 pa4 zi4 ji3 de5 su2 qi4 xie4 du2 le5 pu2 zhe3 hei1 de5 feng1 jing3  
 
 ## 3.2 文本分析
+### 3.2.1 拼音标注规则
+拼音标注风格分成两类，
+1.第一类是国家规定的方案，也就是日常生活中用到的风格，具体参见中华人民共和国教育部发布的[《汉语拼音方案》](http://www.moe.edu.cn/s78/A19/yxs_left/moe_810/s230/195802/t19580201_186000.html)
+2.第二类是方便系统处理的拼音标注风格，具体细分有很多种，这里使用的风格为：相比国家方案的其主要变化如下（建议的方法是将所有实际发音为v的改成v，将所有实际只有韵母的改成只有韵母的标记，例如yuan改成van，wan改成uan）
+    * y w 如何处理，为了处理方便，是否将其当做声母，还是直接去除
+    * 是否将ju qu xu 的标注改成 jv qv xu，注意到我们使用的语料库使用的是jv
+        xv
+    *
+    注意到我们使用的语料库标注“援”这个音的时候使用的是yvan而不是yuan，而pypinyin中使用的是yuan
+    *
+    是否将i行韵母中出现的ye,yan,yang等改成ie,ian,iang，毕竟并不存在声母yw，同理于其他的uv行，注意到语料库使用的ye,yan,yang
+    * 关于儿化音的处理？
 
 
 ## 3.3 文本分析工具包
@@ -88,6 +103,17 @@ wo3 jiu4 pa4 zi4 ji3 de5 su2 qi4 xie4 du2 le5 pu2 zhe3 hei1 de5 feng1 jing3
 值得注意的是
 ### 3.2.2 HanLp
 ### 3.2.3 NLTK
+### 3.2.4 python-pinyin
+[python-pinyin](https://github.com/mozillazg/python-pinyin)
+提供了汉字转换成拼音的工具，它的安装和使用都很方便`pip3 install
+pypinyin`，使用可见[官方文档](https://pypinyin.readthedocs.io/zh_CN/master/)  
+
+关于拼音标注的风格，这里使用了pypinyin.Style.TONE3，举个例子`yuan2
+jiu4`，再稍加转换就称为本系统中使用的风格
+
+注意：
+* pypinyin不提供对数字符号[0-9]进行拼音标记，使用时需要自定义词典，注意覆盖3.4中间有个“点”的声音
+
 
 
 ## 3.4 韵律处理
@@ -137,4 +163,7 @@ https://www.zhihu.com/question/19929473
 ## 6.2 语音合成的有趣应用
 合成歌声 见https://www.zhihu.com/question/26165668)
 参考文献
+## 6.3 有用的工具
+这里有与中文语言处理相关的Python package
+https://pypi.python.org/pypi?:action=browse&show=all&c=98&c=489
 
