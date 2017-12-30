@@ -4,11 +4,9 @@ Tools: Festival && Merlin
 
 **1. download files and copy to merlin/tools**
 
-[speech_tools](http://festvox.org/packed/festival/2.4/speech_tools-2.4-release.tar.gz)
-
-[festival](http://festvox.org/packed/festival/2.4/festival-2.4-release.tar.gz)
-
-[festvox](http://festvox.org/download.html)
+* [speech_tools](http://festvox.org/packed/festival/2.4/speech_tools-2.4-release.tar.gz)
+* [festival](http://festvox.org/packed/festival/2.4/festival-2.4-release.tar.gz)
+* [festvox](http://festvox.org/download.html)
 
 **2. Unzip to merlin/tools**
 
@@ -22,17 +20,14 @@ Attention: You can read the INSTALL file in(merlin/tools/festival && /speech_too
 
 **(1)First download Lexicon and put them in corresponding dir( /merlin/tools/festival/lib/dicts )**
 
-[http://festvox.org/packed/festival/2.4/festlex_CMU.tar.gz](http://festvox.org/packed/festival/2.4/festlex_CMU.tar.gz)
-
-[http://festvox.org/packed/festival/2.4/festlex_OALD.tar.gz](http://festvox.org/packed/festival/2.4/festlex_OALD.tar.gz)
-
-[http://festvox.org/packed/festival/2.4/festlex_POSLEX.tar.gz](http://festvox.org/packed/festival/2.4/festlex_POSLEX.tar.gz)
+* [http://festvox.org/packed/festival/2.4/festlex_CMU.tar.gz](http://festvox.org/packed/festival/2.4/festlex_CMU.tar.gz)
+* [http://festvox.org/packed/festival/2.4/festlex_OALD.tar.gz](http://festvox.org/packed/festival/2.4/festlex_OALD.tar.gz)
+* [http://festvox.org/packed/festival/2.4/festlex_POSLEX.tar.gz](http://festvox.org/packed/festival/2.4/festlex_POSLEX.tar.gz)
 
 **(2) Download test Voice and put them in corresponding dir**
 
-[http://festvox.org/packed/festival/2.4/voices/festvox_rablpc16k.tar.gz](http://festvox.org/packed/festival/2.4/voices/festvox_rablpc16k.tar.gz)
-
-[http://festvox.org/packed/festival/2.4/voices/festvox_kallpc16k.tar.gz](http://festvox.org/packed/festival/2.4/voices/festvox_kallpc16k.tar.gz)
+* [http://festvox.org/packed/festival/2.4/voices/festvox_rablpc16k.tar.gz](http://festvox.org/packed/festival/2.4/voices/festvox_rablpc16k.tar.gz)
+* [http://festvox.org/packed/festival/2.4/voices/festvox_kallpc16k.tar.gz](http://festvox.org/packed/festival/2.4/voices/festvox_kallpc16k.tar.gz)
 
 **(3) Installation order: speech tool——festival ——festvox**
 
@@ -85,6 +80,5 @@ Please read the README.md
 
 **(2) merlin/egs/slt_arctic/s1/experiments/slt_arctic_demo/test_synthesis/**
 
-create dir /txt which contain txt file
-
+create dir /txt which contain txt file  
 run merlin/egs/slt_arctic/s1/merlin_synthesis.sh and then you can get your own label for synthesis
