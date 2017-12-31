@@ -8,7 +8,8 @@ Welcome to first sphinx build's documentation!
 
 .. toctree::
    :maxdepth: 2
-   
+
+    syntax_tutorial_reStructedText
 
 
 

@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'MTTS'
+project = 'MTTS_Mandarin_speech_synthesis'
 copyright = '2017, 2018'
 author = 'Jackiexiao'
 
