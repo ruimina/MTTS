@@ -8,7 +8,7 @@ Welcome to first sphinx build's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   
    hellosphinx
 
 
