@@ -122,12 +122,21 @@ HTK(HMM Tools Kit)是一个由剑桥大学开发的HMM实验工具包。TODO
 101001 我#1就怕#2自己的#1俗气#3亵渎了#2普者黑的#1风景  
 wo3 jiu4 pa4 zi4 ji3 de5 su2 qi4 xie4 du2 le5 pu2 zhe3 hei1 de5 feng1 jing3  
 
-### 3.1.2 语音文本对齐alignment
+### 3.1.2 语音文本对齐alignment&&音库标记&&音素的时长信息
 我们通常需要知道每个音节/音素对应的wav片段以及持续时间是多少，给定一段文本，标注它在音频中的准确位置的任务就叫force-alignment，这里有[forced-alignment-tools](https://github.com/pettarin/forced-alignment-tools)  
 从其中可知[aeneas](https://www.readbeyond.it/aeneas/) 是支持中文简体和繁体的alignment的
 
 由此我们可以得到每个句子对应的发音时长标注文件，包括了句子中每个声韵母的发音时长以及每个停顿的发音时长。
 
+**工具** 
+Festival-2.1可以用于语音的自动切分和标注
+
+### 3.1.3 语料库的获取
+**中文语料库**
+目前网络上尚未有免费的语料库，需要自行构建语料库或者是购买。本文使用的语料库King_tts_003购买自海天瑞声公司
+
+**英文语料库**
+* 卡内基梅隆大学的免费语料库CMU_ARCTIC
 
 
 ## 3.2 文本分析
@@ -141,6 +150,24 @@ wo3 jiu4 pa4 zi4 ji3 de5 su2 qi4 xie4 du2 le5 pu2 zhe3 hei1 de5 feng1 jing3
     * 注意到我们使用的语料库标注“援”这个音的时候使用的是yvan而不是yuan，而pypinyin中使用的是yuan
     * 是否将i行韵母中出现的ye,yan,yang等改成ie,ian,iang，毕竟并不存在声母yw，同理于其他的uv行，注意到语料库使用的ye,yan,yang
     * 关于儿化音的处理？
+
+### 3.2.2 多音字的处理
+多音字是汉语中的普遍现象，正确地处理多音字才能保证汉语tts系统输出的正确性。
+
+目前字音转换的方式有两种，一种是基于规则的字音转换，一种是基于统计的字音转换。基于规则的方法由于过于依赖语言学知识，存在很大的局限性。目前主流的方法是使用基于统计的字音转换。
+
+### 3.2.3 文本规范化
+
+### 3.2.4 词性标注
+
+### 3.2.5 中文分词
+
+### 3.2.6 情感分析
+
+### 3.2.7 自然语言处理概述
+
+### 3.2.8 经过文本分析后输出的xml格式文档
+
 
 
 ## 3.3 文本分析工具包
@@ -189,6 +216,16 @@ pypinyin`，使用可见[官方文档](https://pypinyin.readthedocs.io/zh_CN/mas
 ## 3.5 语音学处理
 
 [2]文使用的声学参数为：24阶梅尔倒谱参数，一阶能量以及一阶基频参数，共78维参数；
+### 3.5.1 声学建模参数的选取
+**mfcc vs mcep vs lsp**
+The vocoder extracts the parameters: spectral envelope, f0 contour, and aperiodicities. Then, you can transform them into MGCs (or MCEP), lf0, and bap, respectively.  
+Do not confuse MGCs (or MCEP) with MFCCs, they are different features. The forced-alignment process uses MFCCs to recognize the phoneme structures of the data.  
+论文”基于HMM的可训练中文语音合成“中提到：用于语音合成的参数 lsp 优于mcep，而mcep 优于mfcc  
+可以参考这篇论文：[A Comparative Performance of Various Speech Analysis-Synthesis Techniques ](https://pdfs.semanticscholar.org/7301/b31571786b661b652b2ecbbcec570e00a18d.pdf)
+
+
+### 3.5.2 使用HTK提取MFCC谱参数和基频F0
+可见文献[4]
 
 ## 3.6 HMM训练
 ### 3.6.1 合成基元以及其状态数量的选择
@@ -420,7 +457,7 @@ World
 ## 3.8 声码器Vocoder
 这个在merlin源码学习中也讲到了。这里可以讲讲声码器的原理。TODO
 
-## 3.9 语音合成
+## 3.9 语音合成模块
 ### 3.9.1 语音合成所需要的文件
 * 经过文本分析得到的正确的汉语拼音序列
 * 上下文标注文件
@@ -429,12 +466,12 @@ World
 
 
 语音合成的主要步骤有
-1. 通过文本分析得到标注文件
-2. 将标注文件转换为上下文相关基元的序列
+1. 通过文本分析得到xml标注文件
+2. 将xml标注文件转换为上下文相关基元的序列
 3. 根据这个序列搜索得到相应的状态时长，基音周期和频谱的HMM模型
 4. 由状态时长HMM模型得到基元个状态的持续时长
 5. 根据状态的时长、基音周期HMM和频谱HMM构建句子的HMM模型，这样每句文本信息都能够转化为一串无跳转从左至右的HMM模型，进行参数合成，得到每帧的基音周期、对数能量和、对数能量和MFCC参数
-6. 将第5步得到的参数传入声码器进行语音合成
+6. 将第5步得到的参数传入基于MSLA滤波器的合成器（声码器）进行语音合成
 
 
 ### 3.8.1 训练模型——Duration和声学模型
@@ -457,6 +494,8 @@ A hidden semi-Markov model (HSMM) is a statistical model with the same structure
 * 可懂度测试[2]
 * 自然度测试[2] 可以使用主观评测的方法MOS(Mean Opinion Score)
 * 流畅度测试
+
+具体测试可参考[3][todo 目前暂时跳过这部分内容]
 
 # 第五章 个性化语音合成和情感语音合成的研究
 ## 5.1 个性化语音合成文献综述
