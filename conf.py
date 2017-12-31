@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'MTTS_Mandarin_speech_synthesis'
-copyright = '2017, 2018'
+copyright = '2018'
 author = 'Jackiexiao'
 
 # The version info for the project you're documenting, acts as replacement for
