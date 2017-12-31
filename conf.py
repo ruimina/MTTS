@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'MTTS中文语音合成'
+project = 'MTTS'
 copyright = '2017, 2018'
 author = 'Jackiexiao'
 
