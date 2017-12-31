@@ -1,2 +1,0 @@
-hello sphinx and readthedocs
-=================
