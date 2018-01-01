@@ -5,9 +5,10 @@ MTTS 中文语音合成手册
     :maxdepth: 2
 
     introduction/index
+    mtts_theory/index
     mtts_implement/index
     voice_evaluation/index
-    persionalized_emotional_speech_synthesis/index
+    further/index
     conclusion_and_prospect
     appendix/index
     reference
