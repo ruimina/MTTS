@@ -2,7 +2,7 @@
 ==============================================
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     research_bg
     main_content_of_thesis
