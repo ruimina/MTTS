@@ -1,33 +1,58 @@
-3.7 Merlin
-=======================
+3.7 Merlin使用手册
+==============================
 
-### 3.7.1 Merlin的安装与运行demo
+详见官方文档！
+
+3.7.1 Merlin的安装
+----------------------------------------------------------
+
 **安装**
+
 Merlin只能在unix类系统下运行，使用Python，并用theano作为后端
+
 Merlin的Python语言采用的是Python2.7编写，所以我们需要在Python2.7的环境下运行Merlin，为避免python不同版本之间的冲突，我们采用Anaconda对Python运行环境进行管理。  
+
 使用Anaconda创建Merlin运行环境具体操作如下：  
+
 打开终端，使用下面命令查看一下现有python环境  
-`conda env list`  
+
+::
+
+    conda env list  
+
 使用下面命令创建一个名为merlin的python环境  
-`conda create --name merlin python=2.7`
+
+::
+
+    conda create --name merlin python=2.7
+
 先进入merlin环境中  
-`source activate merlin`
+
+::
+
+    source activate merlin
+
 在这个环境下安装merlin  
-```
-sudo apt-get install csh
-pip install numpy scipy matplotlib lxml theano bandmat
-git clone https://github.com/CSTR-Edinburgh/merlin.git
-cd merlin/tools
-./compile_tools.sh
-```
+
+::
+
+    sudo apt-get install csh
+    pip install numpy scipy matplotlib lxml theano bandmat
+    git clone https://github.com/CSTR-Edinburgh/merlin.git
+    cd merlin/tools
+    ./compile_tools.sh
+
 如果一切顺利，此时你已经成功地安装了Merlin，但要注意的是Merlin不是一个完整的TTS系统。它提供了核心的声学建模功能：语言特征矢量化，声学和语言特征归一化，神经网络声学模型训练和生成。但语音合成的前端（文本处理器）以及声码器需要另外配置安装。此外，Merlin目前仅提供了英文的语音合成。  
+
 此外，上述安装默认只配置支持CPU的theano，如果想要用GPU加速神经网络的训练，还需要进行其他的步骤。由于语料库的训练时间尚在笔者的接受范围之内（intel-i5，训练slt_arctic_full data需要大概6个小时），因此这里并没有使用GPU进行加速训练。  
 
 **运行Merlin demo**
+
 `.～/merlin/egs/slt_arctic/s1/run_demo.sh`
 该脚本会使用50个音频样本进行声学模型和durarion模型的训练，并合成5个示例音频。在此略去详细的操作步骤，具体可参见：Getting started with the Merlin Speech Synthesis Toolkit [installing-Merlin](https://jrmeyer.github.io/merlin/2017/02/14/Installing-Merlin.html)  
 
-### 3.7.2 Merlin源码理解
+3.7.2 Merlin源码理解
+----------------------------------------------------------
 
 #### 0 文件含义
 
@@ -75,7 +100,8 @@ Merlin一共提供了4类神经网络用于HMM模型的训练，分别是
 - 双向RNN网络
 - 其他变体（如blstm）
 
-### 3.7.3 Merlin 前端
+3.7.3 Merlin 前端
+----------------------------------------------------------
 
 Merlin前端FrontEnd 
 
@@ -107,15 +133,21 @@ The questions in the question file will be used to convert the full-context labe
 questions-radio_dnn_416.hed        questions-unilex_dnn_600.hed  
 查看这两个文件，我们不难发现，questions-radio_dnn_416.hed定义了一个416维度的向量，向量各个维度上的值由label文件来确定，也即是说，从label文件上提取必要的信息，我们可以很轻易的按照定义确定Merlin训练数据training-data；同理questions-unilex_dnn_600.hed确定了一个600维度的向量，各个维度上的值依旧是由label文件加以确定。
 
-### 3.7.4 Merlin vocoder声码器
+3.7.4 Merlin vocoder声码器
+----------------------------------------------------------
 
 Merlin中自带的vocoder工具有以下三类：Straight，World，World_v2  
 这三类工具可以在Merlin的文件目录下找到，具体的路径如下merlin/misc/scripts/vocoder  
 在介绍三类vocoder之前，首先说明几个概念：  
 
-**MGC特征**：通过语音提取的MFCC特征由于维度太高，并不适合直接放到网络上进行训练，所以就出现了MGC特征，将提取到的MFCC特征降维（在这三个声码器中MFCC都被统一将低到60维），以这60维度的数据进行训练就形成了我们所说的MGC特征  
-**BAP特征**： Band Aperiodicity的缩写  
-LF0：LF0是语音的基频特征  
+**MGC特征**
+    通过语音提取的MFCC特征由于维度太高，并不适合直接放到网络上进行训练，所以就出现了MGC特征，将提取到的MFCC特征降维（在这三个声码器中MFCC都被统一将低到60维），以这60维度的数据进行训练就形成了我们所说的MGC特征  
+
+**BAP特征**
+    Band Aperiodicity的缩写  
+
+**LF0**
+    LF0是语音的基频特征  
 
 Straight  
 
@@ -127,6 +159,7 @@ World
 音频文件通过World声码器产生的是：60维的MGC特征，可变维度的BAP特征以及1维的LF0特征，对于16kHz采样的音频信号，BAP的维度为1，对于48kHz采样的音频信号，BAP的维度为5  
 网址为：[github.com/mmorise/World](https://github.com/mmorise/World)  
 
-### 3.7.5 生成Merlin的英文label用于语音合成
+3.7.5 生成Merlin的英文label用于语音合成
+----------------------------------------------------------
 
-具体步骤如下参见：[Create_your_own_label_Using_Festival.md](./Create_your_own_label_Using_Festival.md)
+具体步骤如下参见：`Create_your_own_label_Using_Festival.md <https://github.com/jackiexiao/mtts/docs/mddocs/Create_your_own_label_Using_Festival.md>`_

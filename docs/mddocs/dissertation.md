@@ -1,7 +1,7 @@
-# 论文题目：中文统计参数语音合成系统的实现与改进
+﻿# 论文题目：中文统计参数语音合成系统的实现与改进
 本文正在持续更新中，近期更新时间2017.12.28   
 作者：Jackiexiao 微信:explorerrr  
-[中文语音合成相关思维导图（更新中）](http://naotu.baidu.com/file/efd4f580e80ed57c7bef115f2d7d5813?token=9b6dd5d2e4bc5b95)  
+[中文语音合成相关思维导图](http://naotu.baidu.com/file/efd4f580e80ed57c7bef115f2d7d5813?token=9b6dd5d2e4bc5b95)  
 符号标记  
 * todo 需要找时间处理  
 * optimize 优化，这是可以优化的点  

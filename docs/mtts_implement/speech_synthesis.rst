@@ -9,17 +9,14 @@
 * 经过训练后得到的决策树文件
 * 梅尔倒谱参数、基频参数、时长的模型文件
 
-
 语音合成的主要步骤有
+
 1. 通过文本分析得到xml标注文件
 2. 将xml标注文件转换为上下文相关基元的序列
 3. 根据这个序列搜索得到相应的状态时长，基音周期和频谱的HMM模型
 4. 由状态时长HMM模型得到基元个状态的持续时长
 5. 根据状态的时长、基音周期HMM和频谱HMM构建句子的HMM模型，这样每句文本信息都能够转化为一串无跳转从左至右的HMM模型，进行参数合成，得到每帧的基音周期、对数能量和、对数能量和MFCC参数
 6. 将第5步得到的参数传入基于MSLA滤波器的合成器（声码器）进行语音合成
-
-
-
 
 3.9.2 训练模型——Duration和声学模型
 -----------------------------------
@@ -35,4 +32,5 @@ HTS的训练部分的作用就是由最初的原始语料库经过处理和模�
 
 HSMM半隐马尔可夫模型的解释如下
 
-A hidden semi-Markov model (HSMM) is a statistical model with the same structure as a [hidden Markov model](https://en.wikipedia.org/wiki/Hidden_Markov_model) except that the unobservable process is [semi-Markov](https://en.wikipedia.org/wiki/Semi-Markov_process) rather than [Markov](https://en.wikipedia.org/wiki/Markov_process). This means that the probability of there being a change in the hidden state depends on the amount of time that has elapsed since entry into the current state. This is in contrast to hidden Markov models where there is a constant probability of changing state given survival in the state up to that time
+A hidden semi-Markov model (HSMM) is a statistical model with the same structure as a `hidden Markov model <https://en.wikipedia.org/wiki/Hidden_Markov_model>`_ except that the unobservable process is `semi-Markov <https://en.wikipedia.org/wiki/Semi-Markov_process>`_ rather than `Markov <https://en.wikipedia.org/wiki/Markov_process>`_ . This means that the probability of there being a change in the hidden state depends on the amount of time that has elapsed since entry into the current state. This is in contrast to hidden Markov models where there is a constant probability of changing state given survival in the state up to that time
+

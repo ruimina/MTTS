@@ -1,7 +1,7 @@
 MTTS Merlin中文语音合成手册
 ==============================================
 
-本文档还在写作之中......
+本文档还在写作之中，近期更新时间 2018-01-01
 
 本项目打算基于merlin实现中文语音合成，主要工作集中在Front-end部分，断断续续工作中，预计在3个月内实现中文语音合成的demo
 
@@ -10,6 +10,16 @@ MTTS Merlin中文语音合成手册
 作者：JackieXiao 如果你也在做中文语音合成，欢迎讨论交流
 
 wechat：explorerrr
+
+`[中文语音合成相关思维导图] <http://naotu.baidu.com/file/efd4f580e80ed57c7bef115f2d7d5813?token=9b6dd5d2e4bc5b95>`_  
+
+写作中临时使用的符号
+    * todo 需要找时间处理  
+    * optimize 优化，这是可以优化的点  
+    * thought 想法，冒出的一些奇怪的想法和idea
+    * contro  controvesial 争议
+
+点击 `参考文献reference <#refe>`__
 
 .. toctree::
     :maxdepth: 2

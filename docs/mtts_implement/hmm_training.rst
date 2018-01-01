@@ -18,9 +18,9 @@
 **合成基元的列表**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-声母 | 21个声母+wy+零声母(_A _E _I _O _U _V)
-韵母 | 39个韵母
-静音 | sil pau sp 
+* 声母 | 21个声母+wy+零声母(_A _E _I _O _U _V)
+* 韵母 | 39个韵母
+* 静音 | sil pau sp 
 
 [contro] sil(silence) 表示句首和句尾的静音，pau(pause) 表示由逗号，顿号造成的停顿，句中其他的短停顿为sp(short pause)
 
@@ -71,7 +71,9 @@
 
 决策树的学习资料可以参见[todo]
 
-### 3.6.4 问题集的设计
+3.6.4 问题集的设计
+-----------------------------------------
+
 主要依据参考文献[3]
 
 
@@ -79,10 +81,12 @@
 TODO(Question Set 例子，可以找merlin的)
 
 问题集的设计依赖于不同语言的语言学知识，对于中文语音合成而言，问题集的设计主要参考了以下的语言学知识：
+
 * 声母特征划分，例如声母可以划分成塞音，擦音，鼻音，唇音等，具体参见[TODO]
 * 韵母特征划分，例如韵母可以划分成单韵母，复合韵母，分别包含aeiouv的韵母，具体参见[TODO]
 
 对于三音素模型而言，对于每个划分的特征，都会产生3个判断条件，该音素是否满足条件，它的左音素和右音素是否满足条件。例如
+
 * 判断当前，前接，后接音素/单元是否为擦音
 * QS 'C_Fricative'
 * QS 'L_Fricative'
@@ -92,17 +96,28 @@ TODO(Question Set 例子，可以找merlin的)
 参考微软论文:HMM-based Mandarin Singing Voice Synthesis Using Tailored Synthesis Units and Question Sets
 
 **Question Set for Decision Trees**
+
 Based on unit definition and contextual factors, we define five categories for the questions in the question set. The five categories of the question set are sub-syllable, syllable, phrase, song, and note. The details of the question set are described as follows.
+
 1. Sub-syllable: (current sub-syllable, preceding one and two sub-syllables, and succeeding one and two sub-syllables) Initial/final, final with medial, long model, articulation category of the initial, and pronunciation category of the final
+
 2. Syllable: The number of sub-syllables in a syllable and the position of the syllable in the note
+
 3. Phrase: The number of sub-syllables/syllables in a phrase
+
 4. Song: Average number of sub-syllables/syllables in each measure of the song and the number of phrases in this song
+
 5. Note: The absolute/relative pitch of the note; the key, beat, and tempo of the note; the length of the note by syllable/0.1 second/thirty-second note; the position of the current note in the current measure by syllable/0.1 second/ thirty-second note; and the position of the current note in the current phrase syllable/0.1 second/thirty-second note 
 
-### 3.6.5 决策树的构建
-### 3.6.6 HMM拓扑结构以及声学参数结构
+3.6.5 决策树的构建
+-----------------------------------------
+
+3.6.6 HMM拓扑结构以及声学参数结构
+-----------------------------------------
+
 
 **基元状态的拓扑结构**
+
 本文选择了从左至右无跳转的HMM拓扑结构，其他结构详见[3]3.1.2节  
 
 (begin) 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 (end) 
@@ -110,6 +125,7 @@ Based on unit definition and contextual factors, we define five categories for t
 表示可以跳转到自身的状态，1和7分别是起始和结束状态。
 
 **声学参数的结构**
+
 TODO，可参考[3]
 
 3.6.6 状态时长模型
