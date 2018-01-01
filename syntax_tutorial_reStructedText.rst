@@ -1,6 +1,8 @@
 reST的语法教程
 
-learn_reStructedText 本文内容部分参见 http://jwch.sdut.edu.cn/book/rst.html#rst-tutorial
+* 推荐阅读 https://zh-sphinx-doc.readthedocs.io/en/latest/rest.html#rst-primer
+* 不同轻量标记语言的异同整理 http://www.worldhello.net/gotgithub/appendix/markups.html
+
 
 title 1
 =====================
@@ -115,10 +117,50 @@ one  two  three
 
 :ref:`第一章 <chapter1index>`
 
+**超链接**
+
+- 访问 `Google <http://google.com/>`_ 。
+- 上面已定义，直接引用 google_ 链接。
+- 链接地址在后面定义，如： GitHub_ 。
+- 反引号括起多个单词的链接。如 `my blog`_ 。
+
+.. _GitHub: http://github.com
+.. _my blog: http://www.worldhello.net
+
+**清空标记空白**
+
+标记符号前后空白\
+用\ **反斜线**\ 消除
+
+
+**引言**
+
+`Got GitHub` by Jackie Xiao.
+
+**等宽字体&代码**
+
+这是代码 ``code``
+
+**下划线**
+
+.. role:: ul
+   :class: underline
+
+:ul:`下划线` 效果
+
+不留白的\ :ul:`下划线`\ 效果
+
+**删除线**
+
+.. role:: strike
+   :class: strike
+
+:strike:`删除线` 效果
+
+不留白的\ :strike:`删除线`\ 效果
+
 
 **加入图片的方法** 
-
-.. figure:: img/image2.png
 
 .. figure:: /img/github.png
    :width: 32
@@ -135,6 +177,22 @@ one  two  three
 .. |octocat| image:: /img/github.png
 .. |imglink| image:: /img/github.png
 .. _imglink: https://github.com/
+
+**图片跳转**
+
+.. _fig1:
+
+.. figure:: /img/github.png
+
+   内部跳转图例
+
+上面定义的位置，可以：
+
+- 通过 fig1_ 跳转。
+- 或者 `点击这里 <#fig1>`__ 跳转。
+- 或者参见 :ref:`fig1`\ 。
+- 或者参见 :ref:`fig1`
+
 
 **注释**
     ..加上文字就是注释，例如
@@ -167,7 +225,7 @@ reST脚注的多种表示法：
 .. [*] 星号自动用符号做脚注标记。
 .. [CIT2012] 单词或其他规定格式。
 
-
+[todo]不是很理解上面的..是什么意思
 
 
 
