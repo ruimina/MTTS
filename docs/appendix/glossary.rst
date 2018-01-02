@@ -47,3 +47,62 @@
  - .mgc
  - .utt .utt files are the linguistic representation of the text that Festival outputs（full context training labels)
  - .cfg
+
+
+缩略语表(摘自文献[5])
+
+ - AM Acoustic Model，声学模型
+ - ACR Absolute Category Rating，绝对等级评定
+ - ASR Automatic Speech Recognition，自动语音识别
+ - CART Classification and Regression Tree，分类回归树
+ - CCR Comparison Category Rating，比较等级评定
+ - CFHMM Continuous F0，连续基频模型
+ - CMLLR Constrained Maximum Likelihood Linear Regression，受限最大似然线性回归
+ - CMOS Comparison Mean Opinion Score，比较平均意见分
+ - CORC Correlation Coefficient，相关系数
+ - CR Command-Response，命令响应
+ - CSMAPLR Constrained Structural Maximum A Posterior Linear Regression，受限结构化最大后验概率线性回归
+ - DBN Dynamic Bayesian Network，动态贝叶斯网络
+ - DCR Degradation Category Rating，损伤等级评定
+ - DCT Discrete Cosine Transform，离散余弦变换
+ - DMOS Degradation Mean Opinion Score，损伤平均意见分
+ - ED Emotion Dependent，特定情感
+ - EM Expectation Maximization，期望最大化
+ - F0 Fundamental Frequency，基音频率
+ - GMM Gaussian Mixture Model，高斯混合模型
+ - GTD Global Tied Distribution，全局绑定分布
+ - HMM Hidden Markov Model，隐马尔科夫模型
+ - HNR Harmony Noise Ratio，谐波噪声比
+ - HSS HMM-based Speech Synthesis，基于HMM的语音合成
+ - HSMM Hidden Semi-Markov Model，隐半马尔科夫模型
+ - HTK HMM Tool Kit，HMM工具包
+ - HTS HMM-based Speech Synthesis System，基于HMM的语音合成系统
+ - LPC Linear Prediction Coefficient，线性预测系数
+ - MAP Maximum A Posterior，最大后验概率
+ - MCD Mel-Cepstral Distortion，倒谱系数失真
+ - MDL Minimum Description Length，最小描述长度
+ - MDS Multi-Dimensional Scaling，多维标度
+ - MGCC Mel-Generalized Cepstral Coefficient，梅尔广义倒谱系数
+ - MLI Maximum Likelihood Increase，最大似然增量
+ - MLSA Mel Log Spectral Approximation，梅尔对数谱近似
+ - MLLR Maximum Likelihood Linear Regression，最大似然线性回归
+ - MLPG Maximum Likelihood Parameter Generation，最大似然参数生成
+ - MOS Mean Opinion Score，平均意见分
+ - MSD Multi-Space Distribution，多空间分布
+ - PiTAR Pitch Target Realisation，基频目标实现
+ - PM Prosodic Model，韵律模型
+ - RMSE Root-Mean-Square-Error，根均方误差
+ - SA Speaker Adaptation，说话人自适应
+ - SI Speaker Independent，说话人无关
+ - SMAP Structural Maximum A Posterior，结构化最大后验概率
+ - SMAPLR Structural Maximum A Posterior Linear Regression，结构化最大后验概率线性回归
+ - SPTK Speech Processing Tool Kit，语音处理工具包
+ - SSM Supra-Segmental Model，超音段模型
+ - SSML Speech Synthesis Markup Language，语音合成标记语言
+ - TA Target Approximation，目标逼近
+ - ToBI Tone and Break Index，调式与停顿标记
+ - TTS Text-To-Speech，文语转换
+ - VC Voice Conversion，声音转换
+ - VFS Vector Field Smoothing，矢量场平滑
+ - VPR Voice Print Recognition，声纹识别
+ - VTLN Vocal Tract Length Normalization，声道长度规整

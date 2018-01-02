@@ -6,7 +6,7 @@
 
     corpus
     text_analyse
-    text_analyse_toolkit
+    toolkit
     prosody_processing
     audio_processing
     hmm_training

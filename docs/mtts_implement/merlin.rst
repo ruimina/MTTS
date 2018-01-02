@@ -162,4 +162,4 @@ World
 3.7.5 生成Merlin的英文label用于语音合成
 ----------------------------------------------------------
 
-具体步骤如下参见：`Create_your_own_label_Using_Festival.md <https://github.com/jackiexiao/mtts/docs/mddocs/Create_your_own_label_Using_Festival.md>`_
+具体步骤如下参见：`Create_your_own_label_Using_Festival.md <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/Create_your_own_label_Using_Festival.md>`_

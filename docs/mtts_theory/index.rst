@@ -8,4 +8,5 @@ Statistical Parametric Speech Synthesis
 
     mandarin
     hmm
+    english
 

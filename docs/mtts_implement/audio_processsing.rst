@@ -5,6 +5,10 @@
 
 3.5.1 声学建模参数的选取
 -----------------------------------------------------------------------
+相比其他声学建模参数，例如线性预测倒谱参数LPCC，其缺点在于对辅音的描述能力较差，抗噪声性能较差；而由于STRAIGHT参数建模算法不够成熟，因而合成系统稳定性较差；而MFCC参数能够反映人耳的听觉特性，而且它的提取算法成熟，合成音质较高，计算复杂度低，能够实现实时合成等。[4]
+
+可以使用HTK工具提取MFCC谱参数和基频F0
+
 
 **mfcc vs mcep vs lsp**
 The vocoder extracts the parameters: spectral envelope, f0 contour, and aperiodicities. Then, you can transform them into MGCs (or MCEP), lf0, and bap, respectively.  
