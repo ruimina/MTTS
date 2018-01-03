@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.2 文本分析 &mdash; MTTS  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="MTTS  documentation" href="../index.html"/>
+        <link rel="up" title="第三章 中文语音合成系统的实现" href="index.html"/>
+        <link rel="next" title="3.3 工具包简介" href="toolkit.html"/>
+        <link rel="prev" title="3.1 语料库" href="corpus.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> MTTS
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">第一章 绪论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mtts_theory/index.html">第二章 语音合成理论研究</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">第三章 中文语音合成系统的实现</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="corpus.html">3.1 语料库</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2 文本分析</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.2.1 拼音标注风格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.2 多音字的处理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.2.3 文本规范化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.2.4 词性标注</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.2.5 语气标注</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.2.5 中文分词</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3.2.6 情感分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.7 自然语言处理概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xml">3.2.8 xml格式文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html">3.3 工具包简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prosody_processing.html">3.4 韵律处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmm_training.html">3.6 HMM训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merlin.html">3.7 Merlin使用手册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vocoder.html">3.8 声码器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech_synthesis.html">3.9 语音合成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../voice_evaluation/index.html">第四章 合成语音质量的评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../further/index.html">第五章 个性化和情感语音合成的研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion_and_prospect.html">第六章 总结和展望</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">第七章 附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献和资料</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MTTS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">第三章 中文语音合成系统的实现</a> &raquo;</li>
+        
+      <li>3.2 文本分析</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/mtts_implement/text_analyse.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>3.2 文本分析<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>文本分析是FrontEnd的一部分，关于英文FrontEnd设计可参考：[front-end Design](<a class="reference external" href="http://research.cs.tamu.edu/prism/lectures/sp/l17.pdf">http://research.cs.tamu.edu/prism/lectures/sp/l17.pdf</a>),这个pdf大概讲解了frontend的基础架构，frontend的设计需要大量的语言学知识，工作相对也是比较繁琐的。(the front-end provides a symbolic linguistic representation of the text in terms of phonetic transcription and prosody information)</p>
+<div class="section" id="id2">
+<h2>3.2.1 拼音标注风格<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>拼音标注风格分成两类，</p>
+<p>1.第一类是国家规定的方案，也就是日常生活中用到的风格，具体参见中华人民共和国教育部发布的 <a class="reference external" href="http://www.moe.edu.cn/s78/A19/yxs_left/moe_810/s230/195802/t19580201_186000.html">汉语拼音方案</a>
+2.第二类是方便系统处理的拼音标注风格，具体细分有很多种，这里使用的风格为：相比国家方案的其主要变化如下（建议的方法是将所有实际发音为v的改成v，将所有实际只有韵母的改成只有韵母的标记，例如yuan改成van，wan改成uan）</p>
+<ul class="simple">
+<li>y w 如何处理，为了处理方便，是否将其当做声母，还是直接去除，注意到语料库中将y w 当做声母处理，在发音时长中也是如此标记，我觉得这样不好，因为yw本身并不发音，应该将整体认读音节单独处理而非划分成yw [optimize]</li>
+<li>是否将ju qu xu 的标注改成 jv qv xu，注意到我们使用的语料库使用的是jvxv</li>
+<li>注意到我们使用的语料库标注“援”这个音的时候使用的是yvan而不是yuan，而pypinyin中使用的是yuan</li>
+<li>是否将i行韵母中出现的ye,yan,yang等改成ie,ian,iang，毕竟并不存在声母yw，同理于其他的uv行，注意到语料库使用的ye,yan,yang</li>
+<li>关于儿化音的处理？</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>3.2.2 多音字的处理<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>多音字是汉语中的普遍现象，正确地处理多音字才能保证汉语tts系统输出的正确性。</p>
+<p>目前字音转换的方式有两种，一种是基于规则的字音转换，一种是基于统计的字音转换。基于规则的方法由于过于依赖语言学知识，存在很大的局限性。目前主流的方法是使用基于统计的字音转换。</p>
+</div>
+<div class="section" id="id5">
+<h2>3.2.3 文本规范化<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>[7]</p>
+<p>普通话文本中除了正常的文字外，还会经常出现简略词、日期、公式、号码等 文本信息，这就需要通过文本规范化，对这些文本块进行处理，否则合成出的语音 就会出现语法错误、语义不完整等情况，从而导致语音合成效果的降低。另外，在 不同的上下文环境下，一些非文字文本也会表达不同的含义，比如：“小明体重是 128 斤”中的“128”应该规范为“一百二十八”，而“G128 次列车”中的“128” 应该规范为“幺 二 八”；还有一些不同的输入文本，却表达着相同的含义，比如： 日期的多种写法，“2016-05-15”、“2016 年 5 月 15 号”、“2016/05/15”。因此， 文本规范化作为普通话文本分析中不可缺少的一个模块，直接影响着普通话文本拼 音信息的准确度，并最终决定输出语音的合成效果。</p>
+<p>文本规范化[41,42]就是通过对上下文文本的分析，结合上下文环境，把输入文本 中正常文本以外的非标准文本信息转化为对应文字的过程，其过程如下：</p>
+<ol class="arabic simple">
+<li>结合有限状态机[43](Finite State Machine, FSM)和最大匹配原则，在词典的指 导下，把文本中不标准字符串识别为非标准文本词；</li>
+<li>选取人工设计的特征模板，采用最大熵算法的统计模型，进行训练建模；</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h2>3.2.4 词性标注<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>结巴分词工具包采用和 ictclas 兼容的标记法。</p>
+<p>文献[6][7]有其他的词性标记方法</p>
+</div>
+<div class="section" id="id7">
+<h2>3.2.5 语气标注<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>见文献[6]</p>
+<p>句子语气的类型可分为四种: 即陈述句、疑问句、祈使句、感叹句</p>
+</div>
+<div class="section" id="id8">
+<h2>3.2.5 中文分词<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>3.2.6 情感分析<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id10">
+<h2>3.2.7 自然语言处理概述<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="xml">
+<h2>3.2.8 xml格式文档<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="toolkit.html" class="btn btn-neutral float-right" title="3.3 工具包简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="corpus.html" class="btn btn-neutral" title="3.1 语料库" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, MTTS.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

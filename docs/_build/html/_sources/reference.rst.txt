@@ -32,6 +32,7 @@
 
 CMU_ARCTIC speech synthesis system [OL] .http://festvox.org/cmu_arctic/index.html .2012
 
+Praat: doing phonetics by computer [OL] .http://www.praat.org/ .2012
 
 
 [6]双志伟. 个性化语音生成研究[D]. 合肥: 中国科学技术大学, 2011.
@@ -43,20 +44,29 @@ CMU_ARCTIC speech synthesis system [OL] .http://festvox.org/cmu_arctic/index.htm
 
 郝东亮, 杨鸿武, 张策,等. 面向汉语统计参数语音合成的标注生成方法[J]. 计算机工程与应用, 2016, 52(19):146-153.  
 
+Merlin: An Open Source Neural Network Speech Synthesis System   
+
+* [英文](http://ssw9.net/papers/ssw9_PS2-13_Wu.pdf)
+* [中文](http://blog.csdn.net/lujian1989/article/details/56008786)
+
 2 工程实现教程部分
 
+ - [Getting started with the Merlin Speech Synthesis Toolkit](http://jrmeyer.github.io/merlin/2017/02/14/Installing-Merlin.html)  
+ - [Merlin官方教程（正在建设中）](http://104.131.174.95/Merlin/dnn_tts/doc/build/html/)  
+ - [**Columbia University TTS manual**](http://www.cs.columbia.edu/~ecooper/tts/)  
  - [HTS tutorial](http://hts.sp.nitech.ac.jp/?Tutorial)  
  - [Festvox教程（利用wav 和标记数据创造label）](http://festvox.org/bsv/)  
  - [speech.zone build-your-own-dnn-voice](http://www.speech.zone/exercises/build-your-own-dnn-voice/)   
 
 3 相关软件
 
+ - [Merlin语音合成系统 Github](https://github.com/CSTR-Edinburgh/merlin)
  - [Festvox](https://festvox.org)
  - [HTK](http://htk.eng.cam.ac.uk/) 
  - HTS
  - SPTK
  - World
- - Praat语音学软件: doing phonetics by computer [OL] .http://www.praat.org/ .2012
+ - Praat语音学软件
 
 4 语音识别/合成基础知识
 
