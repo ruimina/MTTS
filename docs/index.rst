@@ -27,6 +27,7 @@ wechat：explorerrr
 .. toctree::
     :maxdepth: 2
 
+    tutorial
     introduction/index
     mtts_theory/index
     mtts_implement/index
