@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="MTTS  documentation" href="#"/>
-        <link rel="next" title="第一章 绪论" href="introduction/index.html"/> 
+        <link rel="next" title="语音合成新手指南" href="tutorial.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,13 +86,14 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction/index.html">第一章 绪论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">语音合成新手指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recent_advances.html">最新研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature_review.html">1.1 文献综述</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mtts_theory/index.html">第二章 语音合成理论研究</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mtts_implement/index.html">第三章 中文语音合成系统的实现</a></li>
 <li class="toctree-l1"><a class="reference internal" href="voice_evaluation/index.html">第四章 合成语音质量的评估</a></li>
-<li class="toctree-l1"><a class="reference internal" href="further/index.html">第五章 个性化和情感语音合成的研究</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusion_and_prospect.html">第六章 总结和展望</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix/index.html">第七章 附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolkit.html">语音合成相关工具包</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">参考文献和资料</a></li>
 </ul>
 
@@ -179,13 +180,26 @@
 </ul>
 </dd>
 </dl>
-<p>点击 <a class="reference external" href="#refe">参考文献reference</a></p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction/index.html">第一章 绪论</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction/research_bg.html">1.1 研究背景</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction/main_content_of_thesis.html">1.2 论文的主要内容</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction/structure_of_thesis.html">1.3 论文结构安排</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">语音合成新手指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#id2">语音合成课程&amp;资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#merlin-toolkit">Merlin Toolkit 使用指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#id3">其他工具使用指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#id4">语音识别相关</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recent_advances.html">最新研究进展</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="recent_advances.html#tacotron-2">tacotron 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recent_advances.html#deepvoice-3">DeepVoice 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recent_advances.html#char2wav">char2wav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recent_advances.html#voice-loop">voice loop</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="literature_review.html">1.1 文献综述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="literature_review.html#id2">1.1.1 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literature_review.html#id3">1.1.2 自然语音模拟与合成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literature_review.html#id4">1.1.2 语音合成技术的分类与研究现状</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mtts_theory/index.html">第二章 语音合成理论研究</a><ul>
@@ -197,8 +211,8 @@
 <li class="toctree-l1"><a class="reference internal" href="mtts_implement/index.html">第三章 中文语音合成系统的实现</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mtts_implement/corpus.html">3.1 语料库</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mtts_implement/text_analyse.html">3.2 文本分析</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mtts_implement/toolkit.html">3.3 工具包简介</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mtts_implement/prosody_processing.html">3.4 韵律处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mtts_implement/audio_processing.html">3.5 语音学处理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mtts_implement/hmm_training.html">3.6 HMM训练</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mtts_implement/merlin.html">3.7 Merlin使用手册</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mtts_implement/vocoder.html">3.8 声码器</a></li>
@@ -206,17 +220,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="voice_evaluation/index.html">第四章 合成语音质量的评估</a></li>
-<li class="toctree-l1"><a class="reference internal" href="further/index.html">第五章 个性化和情感语音合成的研究</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="further/index.html#id2">5.1 个性化语音合成文献综述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="further/index.html#id3">5.2 个性化语音合成研究</a></li>
-<li class="toctree-l2"><a class="reference internal" href="further/index.html#id4">5.3 情感语音合成文献综述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="further/index.html#id5">5.4 情感语音合成研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix/index.html">第七章 附录</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix/glossary.html">7.2 术语表</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conclusion_and_prospect.html">第六章 总结和展望</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix/index.html">第七章 附录</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix/related_toolkit.html">7.1 语音合成相关工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix/glossary.html">7.2 术语表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolkit.html">语音合成相关工具包</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html#id2">1. 自然语言处理工具包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html#id4">2. 语音处理工具包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html#id5">3. 声码器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html#hmm">4. HMM工具包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html#id6">5. 其他工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html#id7">6. 待整理的工具包</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">参考文献和资料</a></li>
@@ -242,7 +256,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="introduction/index.html" class="btn btn-neutral float-right" title="第一章 绪论" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="语音合成新手指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

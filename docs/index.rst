@@ -22,19 +22,18 @@ wechat：explorerrr
     * thought 想法，冒出的一些奇怪的想法和idea
     * contro  controvesial 争议
 
-点击 `参考文献reference <#refe>`__
 
 .. toctree::
     :maxdepth: 2
 
     tutorial
-    introduction/index
+    recent_advances
+    literature_review
     mtts_theory/index
     mtts_implement/index
     voice_evaluation/index
-    further/index
-    conclusion_and_prospect
     appendix/index
+    toolkit
     reference
 
 

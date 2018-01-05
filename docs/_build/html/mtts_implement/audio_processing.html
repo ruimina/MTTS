@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="MTTS  documentation" href="../index.html"/> 
+    <link rel="top" title="MTTS  documentation" href="../index.html"/>
+        <link rel="up" title="第三章 中文语音合成系统的实现" href="index.html"/>
+        <link rel="next" title="3.6 HMM训练" href="hmm_training.html"/>
+        <link rel="prev" title="3.4 韵律处理" href="prosody_processing.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -84,14 +87,27 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">第八章 语音合成新手指南</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">语音合成新手指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">第一章 绪论</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mtts_theory/index.html">第二章 语音合成理论研究</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">第三章 中文语音合成系统的实现</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">第三章 中文语音合成系统的实现</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="corpus.html">3.1 语料库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_analyse.html">3.2 文本分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolkit.html">3.3 工具包简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prosody_processing.html">3.4 韵律处理</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.5 语音学处理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.5.1 声学建模参数的选取</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#htkmfccf0">3.5.2 HTK提取MFCC谱参数和基频F0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hmm_training.html">3.6 HMM训练</a></li>
+<li class="toctree-l2"><a class="reference internal" href="merlin.html">3.7 Merlin使用手册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vocoder.html">3.8 声码器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech_synthesis.html">3.9 语音合成</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../voice_evaluation/index.html">第四章 合成语音质量的评估</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../further/index.html">第五章 个性化和情感语音合成的研究</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conclusion_and_prospect.html">第六章 总结和展望</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">第七章 附录</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献和资料</a></li>
 </ul>
@@ -138,13 +154,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="index.html">第三章 中文语音合成系统的实现</a> &raquo;</li>
+        
       <li>3.5 语音学处理</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/mtts_implement/audio_processsing.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/mtts_implement/audio_processing.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -183,6 +201,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hmm_training.html" class="btn btn-neutral float-right" title="3.6 HMM训练" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="prosody_processing.html" class="btn btn-neutral" title="3.4 韵律处理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

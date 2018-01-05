@@ -88,6 +88,8 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">语音合成新手指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recent_advances.html">最新研究进展</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">第一章 绪论</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mtts_theory/index.html">第二章 语音合成理论研究</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">第三章 中文语音合成系统的实现</a><ul class="current">
@@ -115,6 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="text_analyse.html">3.2 文本分析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="toolkit.html">3.3 工具包简介</a></li>
 <li class="toctree-l2"><a class="reference internal" href="prosody_processing.html">3.4 韵律处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_processing.html">3.5 语音学处理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hmm_training.html">3.6 HMM训练</a></li>
 <li class="toctree-l2"><a class="reference internal" href="merlin.html">3.7 Merlin使用手册</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vocoder.html">3.8 声码器</a></li>
@@ -122,9 +125,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../voice_evaluation/index.html">第四章 合成语音质量的评估</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../further/index.html">第五章 个性化和情感语音合成的研究</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conclusion_and_prospect.html">第六章 总结和展望</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">第七章 附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit.html">语音合成相关工具包</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献和资料</a></li>
 </ul>
 
@@ -272,6 +274,7 @@
 <h3><strong>英文语料库</strong><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>下面摘自文献[5]</p>
 <p>ARCTIC数据库是由卡内基梅隆大学（CMU）语言技术研究所开发的英文朗读语音数据库[51]。最初是用来训练基于单元挑选（Unit selection）的语音合成系统，后来成为基于HSS英文系统训练的通用数据库。该库包含1132句文本，选自文化作品数字化项目“古腾堡计划”中的两个英文短篇故事[52]。共有7名说话人参与录音，其中BDL、SLT、CLB和RMS四位说话人使用美式英语，其余三位是有加拿大、苏格兰及印度口音的英语母语说话人。为便于评测，本论文中的使用四位美式英语说话人的数据训练英文的声音模型。ARCTIC中另外一位说话人Roger也是美式英语，与其他人的数据独立发行，大量用于Blizzard Challenge测试中。ARCTIC数据库的上下文标注数据由开源语音合成系统Festival[53]的前端文本分析模块得到，使用由名古屋工业大学Tokuda实验室发布的以音素为单位的标准英文上下文标注格式。</p>
+<p>CMU_ARCTIC speech synthesis system [OL] .http://festvox.org/cmu_arctic/index.html .2012</p>
 <p>EMA数据库[54]是由南加州大学SAIL实验室开发的使用电磁设备记录发声器官数据的英文情感语音数据库。共包含2名女性（JN、LS）和1名男性（AB）美式英语母语说话人。录音文本共包含10句英文语料，每名说话人用每种情感将一句语料重复录制5次。然后通过一批测听人员对每条录音情感表现的打分，根据平均意见，决定哪些录音是有效的情感语音数据。这个数据库包含语音波形和同步录制的舌位动态信号，本身是用于研究情感语音的声学表现以及发声器官协同建模的小规模音库。在本文中，将用于学习中性语音到情感语音转换的声学参数变换规则。由于EMA只是用于进行声学分析，没有提供标注。因此，使用Festival的前端文本分析模块得到了与ARCTIC相同格式的英文上下文标注。</p>
 </div>
 </div>
