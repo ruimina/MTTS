@@ -99,11 +99,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#id6">3.2.2 多音字的处理</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">3.2.3 文本规范化</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id8">3.2.4 词性标注</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">3.2.5 语气标注</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.5 中文分词</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">3.2.6 情感分析</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">3.2.7 自然语言处理概述</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#xml">3.2.8 xml格式文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">3.2.5 句子语气类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">3.2.5 中文分词</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">3.2.6 语言分析结果存储文档</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="prosody_processing.html">3.4 韵律处理</a></li>
@@ -214,7 +212,7 @@
 </dd>
 </dl>
 <p>拼音标注风格分成两类，</p>
-<p>1.第一类是国家规定的方案，也就是日常生活中用到的风格，具体参见中华人民共和国教育部发布的 <a class="reference external" href="http://www.moe.edu.cn/s78/A19/yxs_left/moe_810/s230/195802/t19580201_186000.html">汉语拼音方案</a></p>
+<p>1.第一类是国家规定的方案，也就是日常生活中用到的风格，规定了声母21个，其韵母表中列出35个韵母，具体参见中华人民共和国教育部发布的 <a class="reference external" href="http://www.moe.edu.cn/s78/A19/yxs_left/moe_810/s230/195802/t19580201_186000.html">汉语拼音方案</a></p>
 <dl class="docutils">
 <dt>2.第二类是方便系统处理的拼音标注风格，不同项目有不同的注音风格，区别主要在于</dt>
 <dd><ul class="first last simple">
@@ -233,7 +231,7 @@
 <li>标注为 jv qv xv</li>
 <li>标注为 yvan yve yvn</li>
 <li>将iou, uei, uen 标注还原</li>
-<li>ê标注为ee, er标注为er, i(前)标注为ic, i(后)标记为ih</li>
+<li>ê标注为ee, er(包括儿化音中的r)标注为er, i(前)标注为ic, i(后)标记为ih</li>
 </ul>
 </dd>
 </dl>
@@ -257,38 +255,90 @@
 <h2>3.2.2 多音字的处理<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>多音字是汉语中的普遍现象，正确地处理多音字才能保证汉语tts系统输出的正确性。</p>
 <p>目前字音转换的方式有两种，一种是基于规则的字音转换，一种是基于统计的字音转换。基于规则的方法由于过于依赖语言学知识，存在很大的局限性。目前主流的方法是使用基于统计的字音转换。</p>
+<p>本项目使用了python package - pypinyin，在此跳过对相关技术的介绍。</p>
 </div>
 <div class="section" id="id7">
 <h2>3.2.3 文本规范化<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>[7]</p>
-<p>普通话文本中除了正常的文字外，还会经常出现简略词、日期、公式、号码等 文本信息，这就需要通过文本规范化，对这些文本块进行处理，否则合成出的语音 就会出现语法错误、语义不完整等情况，从而导致语音合成效果的降低。另外，在 不同的上下文环境下，一些非文字文本也会表达不同的含义，比如：“小明体重是 128 斤”中的“128”应该规范为“一百二十八”，而“G128 次列车”中的“128” 应该规范为“幺 二 八”；还有一些不同的输入文本，却表达着相同的含义，比如： 日期的多种写法，“2016-05-15”、“2016 年 5 月 15 号”、“2016/05/15”。因此， 文本规范化作为普通话文本分析中不可缺少的一个模块，直接影响着普通话文本拼 音信息的准确度，并最终决定输出语音的合成效果。</p>
-<p>文本规范化[41,42]就是通过对上下文文本的分析，结合上下文环境，把输入文本 中正常文本以外的非标准文本信息转化为对应文字的过程，其过程如下：</p>
+<dl class="docutils">
+<dt>有时候普通话文本中会出现简略词、日期、公式、号码等文本信息，这就需要通过文本规范化，对这些文本块进行处理以正确发音[7]。例如</dt>
+<dd><ul class="first last simple">
+<li>“小明体重是 128 斤”中的“128”应该规范为“一百二十八”，而“G128 次列车”中的“128” 应该规范为“一 二 八”；</li>
+<li>“2016-05-15”、“2016 年 5 月 15 号”、“2016/05/15”可以统一为一致的发音</li>
+</ul>
+</dd>
+</dl>
+<p>文本规范化就是通过对上下文文本的分析，结合上下文环境，把输入文本中正常文本以外的非标准文本信息转化为对应文字的过程。</p>
+<p>文本规范化其中一方方法如下。</p>
 <ol class="arabic simple">
-<li>结合有限状态机[43](Finite State Machine, FSM)和最大匹配原则，在词典的指 导下，把文本中不标准字符串识别为非标准文本词；</li>
+<li>结合有限状态机[43](Finite State Machine, FSM)和最大匹配原则，在词典的指导下，把文本中不标准字符串识别为非标准文本词；</li>
 <li>选取人工设计的特征模板，采用最大熵算法的统计模型，进行训练建模；</li>
 </ol>
+<p>本项目没有暂时没有计划实现此类功能，因此也跳过不详细介绍。</p>
 </div>
 <div class="section" id="id8">
 <h2>3.2.4 词性标注<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>结巴分词工具包采用和 ictclas 兼容的标记法。</p>
-<p>文献[6][7]有其他的词性标记方法</p>
-</div>
-<div class="section" id="id9">
-<h2>3.2.5 语气标注<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>见文献[6]</p>
-<p>句子语气的类型可分为四种: 即陈述句、疑问句、祈使句、感叹句</p>
+<p>本项目使用 结巴 工具进行词性标注。结巴分词工具包采用和 ictclas 兼容的标记法。由于结巴分词的标准较为简单，本项目使用结巴的词性标注规范，在上下文标注和问题集中只取大类标注，即字母a-z所代表的词性，具体见下方列表中给出的结巴词性标注表</p>
+<dl class="docutils">
+<dt>词性标注规范</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/jieba.md">结巴使用的词性标注表</a></li>
+<li><a class="reference external" href="https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/ictclas.md">中科院ictclas规范</a></li>
+<li>` 斯坦福Stanford coreNLP宾州树库的词性标注规范 &lt;<a class="reference external" href="https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/Stanford_coreNLP.md">https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/Stanford_coreNLP.md</a>&gt;`_</li>
+<li>` ICTPOS3.0词性标记集 &lt;<a class="reference external" href="https://gist.github.com/luw2007/6016931">https://gist.github.com/luw2007/6016931</a>&gt;`_ 链接中还包括了ICTCLAS 汉语词性标注集、jieba 字典中出现的词性、simhash 中可以忽略的部分词性</li>
+<li>北大标注集</li>
+</ul>
+</dd>
+</dl>
 </div>
 <div class="section" id="id10">
-<h2>3.2.5 中文分词<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<h2>3.2.5 句子语气类型<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">句子语气的类型</th>
+<th class="head">陈述句</th>
+<th class="head">疑问句</th>
+<th class="head">祈使句</th>
+<th class="head">感叹句</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>标识符</td>
+<td>d</td>
+<td>e</td>
+<td>i</td>
+<td>q</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="id11">
-<h2>3.2.6 情感分析<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2>3.2.5 中文分词<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>这里不关注中文分词的技术，而只关注中文分词的标准和中文分词的一些问题。</p>
+<p>出处：知乎 链接：<a class="reference external" href="https://www.zhihu.com/question/19578687/answer/190569700">https://www.zhihu.com/question/19578687/answer/190569700</a></p>
+<p>分词器当前存在问题：目前中文分词难点主要有三个：</p>
+<p>1、分词标准：比如人名，在哈工大的标准中姓和名是分开的，但在Hanlp中是合在一起的。这需要根据不同的需求制定不同的分词标准。</p>
+<dl class="docutils">
+<dt>2、歧义：对同一个待切分字符串存在多个分词结果。歧义又分为组合型歧义、交集型歧义和真歧义三种类型。</dt>
+<dd><ol class="first last arabic simple">
+<li>组合型歧义：分词是有不同的粒度的，指某个词条中的一部分也可以切分为一个独立的词条。比如“中华人民共和国”，粗粒度的分词就是“中华人民共和国”，细粒度的分词可能是“中华/人民/共和国”</li>
+<li>交集型歧义：在“郑州天和服装厂”中，“天和”是厂名，是一个专有词，“和服”也是一个词，它们共用了“和”字。</li>
+<li>真歧义：本身的语法和语义都没有问题, 即便采用人工切分也会产生同样的歧义，只有通过上下文的语义环境才能给出正确的切分结果。例如：对于句子“美国会通过对台售武法案”，既可以切分成“美国/会/通过对台售武法案”，又可以切分成“美/国会/通过对台售武法案”。一般在搜索引擎中，构建索引时和查询时会使用不同的分词算法。常用的方案是，在索引的时候使用细粒度的分词以保证召回，在查询的时候使用粗粒度的分词以保证精度。</li>
+</ol>
+</dd>
+</dl>
+<p>3、新词：也称未被词典收录的词，该问题的解决依赖于人们对分词技术和汉语语言结构的进一步认识。</p>
+<p>本项目使用了结巴分词器，读者可以按自己的需要选择其他分词器，可见github项目：<a class="reference external" href="https://github.com/ysc/cws_evaluation">中文分词器分词效果评估对比</a></p>
 </div>
-<div class="section" id="id12">
-<h2>3.2.7 自然语言处理概述<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="xml">
-<h2>3.2.8 xml格式文档<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>3.2.6 语言分析结果存储文档<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<p>文本分析后需要输出含有分析结果的数据以便进行下一步的“上下文相关的标注”文件提取，存储分析数据的方式有xml格式文档或者是HTS系统使用的utt格式文件</p>
 </div>
 </div>
 

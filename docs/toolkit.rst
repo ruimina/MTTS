@@ -4,7 +4,9 @@
 1. 自然语言处理工具包
 ---------------------------------------------
 
-常用的开源自然语言处理/开发包可见[知乎-鉴津Jackie的回答](https://www.zhihu.com/question/19929473/answer/264555333)
+`知乎 常用的开源自然语言处理/开发包<https://www.zhihu.com/question/19929473/answer/264555333>`_
+
+`知乎 比较好的中文分词方案 <https://www.zhihu.com/question/19578687/answer/190569700>`_
 
 python-pinyin
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -16,7 +18,7 @@ python-pinyin
 
     pip3 install pypinyin
     
-使用可见`官方文档 <https://pypinyin.readthedocs.io/zh_CN/master/>`_
+使用可见 `官方文档 <https://pypinyin.readthedocs.io/zh_CN/master/>`_
 
 关于拼音标注的风格，这里使用了pypinyin.Style.TONE3，举个例子 `yuan2 jiu4` ，再稍加转换就称为本系统中使用的风格
 
@@ -27,7 +29,7 @@ python-pinyin
 结巴分词
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-结巴分词很容易安装和使用，可见[结巴分词-github主页](https://github.com/fxsjy/jieba)，这里就不赘述了。
+结巴分词很容易安装和使用，可见 `[结巴分词-github主页]<https://github.com/fxsjy/jieba>`_ ，这里就不赘述了。
 值得注意的是
 
 
