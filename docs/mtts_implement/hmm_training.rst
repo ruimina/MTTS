@@ -46,18 +46,14 @@
 
 **设计上下文相关标注的规则**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+上下文相关标注的规则要综合考虑有哪些上下文对当前音素发音的影响，总的来说，需要考虑发音基元及其前后基元的信息，以及发音基元所在的音节、词、韵律词、韵律短语、语句相关的信息。[1]
 
-本项目的上下文相关标注主要参考了文献[13]
+本项目的上下文相关标注参考了文献[13]，其规则见 `面向汉语统计参数语音合成的标注生成方法 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_example_label.md>`_
 
-即要综合考虑有哪些上下文对当前音素发音的影响，总的来说，需要考虑发音基元及其前后基元的信息，以及发音基元所在的音节、词、韵律词、韵律短语、语句相关的信息。[1]但是具体到哪些上下文是更有必要的就需要再仔细研究研究了[optimize]
-
-
-本文将提供多种上下文设计以及对应的问题集，并探讨不同上下文设计对语音合成效果的影响[todo]，目前本项目打算提供的上下相关标注如下
-* demo形式的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs>`_
-* 不包含韵律特征的上下文标注
-* 包含韵律特征的上下文标注
-
-[3]也提供了一种上下文设计的思路
+本项目自行设计了上下文设计规则以及问题集，尽可能保证了设计规则的扩展性和全面性，如下
+* `不包含韵律特征的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_demo_label.md>`_
+* `包含韵律特征的简单上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_simple_label.md>`_
+* `包含韵律特征的复杂上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_complex_label.md>`_
 
 
 3.6.3 基于决策树的聚类

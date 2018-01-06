@@ -87,6 +87,8 @@ FrontEnd
 
 本项目没有暂时没有计划实现此类功能，因此也跳过不详细介绍。
 
+请详见文献[26]
+
 
 3.2.4 词性标注
 -----------------------------------------------------
@@ -96,12 +98,14 @@ FrontEnd
 词性标注规范
     * `结巴使用的词性标注表 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/jieba.md>`_
     * `中科院ictclas规范 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/ictclas.md>`_
-    * ` 斯坦福Stanford coreNLP宾州树库的词性标注规范 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/Stanford_coreNLP.md>`_
-    * ` ICTPOS3.0词性标记集 <https://gist.github.com/luw2007/6016931>`_ 链接中还包括了ICTCLAS 汉语词性标注集、jieba 字典中出现的词性、simhash 中可以忽略的部分词性
+    * `斯坦福Stanford coreNLP宾州树库的词性标注规范 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/Stanford_coreNLP.md>`_
+    * `ICTPOS3.0词性标记集 <https://gist.github.com/luw2007/6016931>`_ 链接中还包括了ICTCLAS 汉语词性标注集、jieba 字典中出现的词性、simhash 中可以忽略的部分词性
     * 北大标注集
 
 3.2.5 句子语气类型
 -----------------------------------------------------
+
+[todo]找到能自动标识句子语气类型的工具
 
 ============== ====== ====== ====== ======
 句子语气的类型 陈述句 疑问句 祈使句 感叹句
