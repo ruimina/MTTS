@@ -25,4 +25,12 @@ Do not confuse MGCs (or MCEP) with MFCCs, they are different features. The force
 3.5.2 HTK提取MFCC谱参数和基频F0
 ----------------------------------------------------------------------------
 
+使用HTK的HCopy命令即可完成MFCC的提取
+
+安装HTK3.4+HTS2.1
+
+* 依赖：g++ x11库
+* 测试：安装完毕后, 运行其中自带的例子测试安装编译是否成功, 
+
+
 可见文献[4]

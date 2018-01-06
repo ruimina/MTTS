@@ -41,13 +41,17 @@ python-pinyin
 
 STRAIGHT是由日本和歌山大学的Kawahara博士提出的语音信号分析工具[56]。使用STRAIGHT可以进行频谱分析，基频提取和非周期成分分析。其频谱比较平滑，与基于傅里叶变换的语音短时频谱相比，其中包含基频及其谐波的成分基本去除，因此允许对基频和频谱参数进行更大范围的修改而不损伤音质，更适用于作为个性化语音合成系统的声学分析模块。在本论文中，除特别说明，均使用STRAIGHT进行频谱和基频的提取。STRAIGHT频谱将进一步用SPTK的工具提取MGCC频谱系数，其基频直接用于声学模型训练。在合成时，使用改造的SPTK中的MLSA滤波器生成语音波形。[5]
 
+具体介绍参见文献[24],并加以补充
+
 World
 
 
-4. HMM工具包
+4. HTK
 ---------------------------------------------
 
 HMM工具包（HMM Tool Kit，HTK）是由剑桥大学工程学院机器学习实验室开发的用于自动语音识别的工具包[57]。其中包括基于K均值的HMM模型初始化（HInit）、HMM孤立参数估计（HRest）、HMM上下文参数估计（HERest）和模型状态聚类与模型编辑（HHEd）等工具。在此基础上，Tokuda实验室将HTK改造为基于HSS的合成系统（HMM-based Speech Synthesis System，HTS），主要的工作包括：用HSMM代替HMM实现显式时长建模与参数估计、基于最小描述长度（Minimum Description Length，MDL）的上下文聚类等。本文中使用由HTK版本3.4.1改造的HTS版本2.2进行短时声学参数建模[58]。[5]
+
+请参考文献[24]中的内容对HTK进行补充
 
 5. 其他工具
 ----------------------------------------------------------
@@ -68,3 +72,6 @@ https://pypi.python.org/pypi?:action=browse&show=all&c=98&c=489
 * Festvox(https://festvox.org)
 * Merlin
 
+SPTK 
+
+通过 STRAIGHT 合成器提取的谱参数具有独特特征(维数较高), 所以它不能直接用于 HTS 系统中,需要使用 SPTK 工具将其特征参数降维, 转换为 HTS训练中可用的 mgc(Mel-generalized cepstral)参数,

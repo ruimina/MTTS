@@ -38,7 +38,7 @@
     <link rel="top" title="MTTS  documentation" href="../index.html"/>
         <link rel="up" title="第三章 中文语音合成系统的实现" href="index.html"/>
         <link rel="next" title="3.7 Merlin使用手册" href="merlin.html"/>
-        <link rel="prev" title="3.4 韵律处理" href="prosody_processing.html"/> 
+        <link rel="prev" title="3.5 语音学处理" href="audio_processing.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,13 +88,15 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">第一章 绪论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">语音合成新手指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recent_advances.html">最新研究进展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../literature_review.html">第一章 文献综述</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mtts_theory/index.html">第二章 语音合成理论研究</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">第三章 中文语音合成系统的实现</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="corpus.html">3.1 语料库</a></li>
 <li class="toctree-l2"><a class="reference internal" href="text_analyse.html">3.2 文本分析</a></li>
-<li class="toctree-l2"><a class="reference internal" href="toolkit.html">3.3 工具包简介</a></li>
 <li class="toctree-l2"><a class="reference internal" href="prosody_processing.html">3.4 韵律处理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_processing.html">3.5 语音学处理</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.6 HMM训练</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">3.6.1 合成基元以及其状态数量的选择</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2"><strong>如何选取合成基元</strong></a></li>
@@ -122,9 +124,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../voice_evaluation/index.html">第四章 合成语音质量的评估</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../further/index.html">第五章 个性化和情感语音合成的研究</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../conclusion_and_prospect.html">第六章 总结和展望</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">第七章 附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">附录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolkit.html">语音合成相关工具包</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">参考文献和资料</a></li>
 </ul>
 
@@ -193,17 +194,19 @@
             
   <div class="section" id="hmm">
 <h1>3.6 HMM训练<a class="headerlink" href="#hmm" title="Permalink to this headline">¶</a></h1>
+<p>训练HMM主要使用HTS工具</p>
 <div class="section" id="id1">
 <h2>3.6.1 合成基元以及其状态数量的选择<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
 <h3><strong>如何选取合成基元</strong><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>[3]对于汉语语音系统而言，常用的基本基元有音节、声韵母和音素。由于汉语有418个无调音节，如考虑语调则有1300多个音节，在进行上下文无关的建模时，选用音节作为基元可以取得比较好的性能。[todo 可以试一下使用音节来作为合成单元，看看合成效果]但如果考虑上下文相关的变化，则会由于基元数目太多而导致模型无法实现。而声韵母（声母21个，韵母todo个）与音素的数目都相对较少，因此可以用来作上下文相关模型的基元。</p>
+<p>[3]对于汉语语音系统而言，常用的基本基元有音节、声韵母和音素。由于汉语有410个无调音节，如考虑语调则有1300多个音节（具体数量上不同词典的标准都不相同，这里取约数），在进行上下文无关的建模时，选用音节作为基元可以取得比较好的性能。[todo 可以试一下使用音节来作为合成单元，看看合成效果]但如果考虑上下文相关的变化，则会由于基元数目太多而导致模型无法实现。而声韵母（声母21个，韵母todo个）与音素的数目都相对较少，因此可以用来作上下文相关模型的基元。</p>
 <p>汉语大概有35个音素，但是音素并没有反映出汉语语音的特点，而且，相对于声韵母，音素显得十分不稳定，这就给标注带来了困难，进而影响声学建模，因此，音素也不适合作为上下文相关的合成基元。[3]</p>
 <p>[todo]有没有用音节来做基元的，音素指的是？ming分成 m i n g四个音素？</p>
 <p>这里选择音节和声韵母两种，为了模拟发音中的停顿，可以将短时停顿和长时停顿看做是合成基元，此外，将句子开始前和结束时的静音sil也当做合成基元</p>
 </div>
 <div class="section" id="id3">
 <h3><strong>合成基元的列表</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>本项目选用的合成基元为</p>
 <ul class="simple">
 <li>声母 | 21个声母+wy+零声母(_A _E _I _O _U _V)</li>
 <li>韵母 | 39个韵母</li>
@@ -244,7 +247,7 @@
 </div>
 <div class="section" id="id9">
 <h2>3.6.4 问题集的设计<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>主要依据参考文献[3]</p>
+<p>主要依据参考文献[3]以及文献[24]</p>
 <p>问题集(Question Set)即是决策树中条件判断的设计。问题集通常很大，由几百个判断条件组成，一个典型的问题集文件的部分内容如下:
 TODO(Question Set 例子，可以找merlin的)</p>
 <p>问题集的设计依赖于不同语言的语言学知识，对于中文语音合成而言，问题集的设计主要参考了以下的语言学知识：</p>
@@ -340,7 +343,7 @@ TODO(Question Set 例子，可以找merlin的)</p>
         <a href="merlin.html" class="btn btn-neutral float-right" title="3.7 Merlin使用手册" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="prosody_processing.html" class="btn btn-neutral" title="3.4 韵律处理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="audio_processing.html" class="btn btn-neutral" title="3.5 语音学处理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
