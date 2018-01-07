@@ -59,6 +59,12 @@ FrontEnd
     * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 üe、iao 、iou、uai、uei
     * 鼻韵母 an、ian、uan、 üan 、en、in、uen、 ün 、ang、iang、uang、eng、ing、ueng、ong、iong
 
+韵母（39个）（转换标注后）
+    * 单韵母 a、o、e、ee、i、u、v、ic、ih、er
+    * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 üe、iao 、iou、uai、uei
+    * 鼻韵母 an、ian、uan、 üan 、en、in、uen、 ün 、ang、iang、uang、eng、ing、ueng、ong、iong
+
+
 注意：
 * pypinyin中使用的是 yuan ju lun
 * 本文语料库使用的是 yvan jv lun，语料库中音素标注将yw视作声母

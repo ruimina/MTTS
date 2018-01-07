@@ -4,7 +4,7 @@
 
 划分特征  | 描述    | 基元列表
 -------- | ------- | -------
-Stop | 塞音|b, d, g, p, t, k
+Stop|塞音|b, d, g, p, t, k
 Aspirated Stop|塞送气音|b，d，g
 Unaspirated Stop|非塞送气音|P，t,k
 Affricate|塞檫音|z，zh，j，c，ch，q
@@ -56,3 +56,6 @@ Type V|含V的韵母|v，vn, ve
 * 基元所在词的后接词的词性
 * 基元在其所在词中的位置
 * 基元所在词的音节数（字数）
+
+### 韵律划分特征
+* 是否是重音

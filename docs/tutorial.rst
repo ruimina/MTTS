@@ -5,8 +5,9 @@
 ------------------------------------------------------
 
 **推荐**
-* 牛津大学的深度学习课程（第十章节为tts） https://github.com/oxford-cs-deepnlp-2017/lectures
-* 哥伦比亚大学的tts教程 http://www.cs.columbia.edu/~ecooper/tts/
+
+* `牛津大学的深度学习课程（第十章节为tts） <https://github.com/oxford-cs-deepnlp-2017/lectures>`_
+* `哥伦比亚大学的tts教程 <http://www.cs.columbia.edu/~ecooper/tts/>`_
 * A beginners’ guide to statistical parametric speech synthesis
     * [英文](http://www.cstr.ed.ac.uk/downloads/publications/2010/king_hmm_tutorial.pdf)
     * [中文](https://shartoo.github.io/texttospeech/)
