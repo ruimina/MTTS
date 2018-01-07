@@ -47,6 +47,7 @@
  - .mgc
  - .utt .utt files are the linguistic representation of the text that Festival outputs（full context training labels)
  - .cfg
+ - initial && final 声母和韵母
 
 
 缩略语表(摘自文献[5])

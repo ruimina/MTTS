@@ -61,8 +61,8 @@ FrontEnd
 
 韵母（39个）（转换标注后）
     * 单韵母 a、o、e、ee、i、u、v、ic、ih、er
-    * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 üe、iao 、iou、uai、uei
-    * 鼻韵母 an、ian、uan、 üan 、en、in、uen、 ün 、ang、iang、uang、eng、ing、ueng、ong、iong
+    * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 ve、iao 、iou、uai、uei
+    * 鼻韵母 an、ian、uan、 van 、en、in、uen、 vn 、ang、iang、uang、eng、ing、ueng、ong、iong
 
 
 注意：

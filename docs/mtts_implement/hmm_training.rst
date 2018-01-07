@@ -52,8 +52,8 @@
 
 本项目自行设计了上下文设计规则以及问题集，尽可能保证了设计规则的扩展性和全面性，如下
 * `不包含韵律特征的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_demo_label.md>`_
-* `包含韵律特征的简单上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_simple_label.md>`_
-* `包含韵律特征和重音的复杂上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_complex_label.md>`_
+* `包含韵律特征的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_simple_label.md>`_
+* `包含韵律特征和重音的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_complex_label.md>`_
 
 
 3.6.3 基于决策树的聚类
@@ -88,7 +88,12 @@
 * 声母特征划分，例如声母可以划分成塞音，擦音，鼻音，唇音等，声母特征划分24个
 * 韵母特征划分，例如韵母可以划分成单韵母，复合韵母，分别包含aeiouv的韵母，韵母特征划分8个
 * 其他信息划分，词性划分，26个词性; 声调类型，5个; 是否是声母或者韵母或者静音，3个
-* 韵律特征划分，
+* 韵律特征划分，如是否是重音
+* 位置特征划分，
+
+L0为音节，L1为词，L2为韵律词，L3为韵律短语，L4为语调短语，L5为语句
+
+那么就有
 
 具体参见 `【划分特征】 <../mddocs/segment_feature.md>`_
 
