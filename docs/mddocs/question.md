@@ -1,8 +1,10 @@
 # 问题集示例
 
-设置此中文上下文标注和对应问题集时参考了 `HTS label <http://www.cs.columbia.edu/~ecooper/tts/lab_format.pdf>`_ 以及 `Merlin Questions <https://github.com/CSTR-Edinburgh/merlin/tree/master/misc/questions>`_ 
+设置此中文上下文标注和对应问题集时参考了 
+* [HTS label](http://www.cs.columbia.edu/~ecooper/tts/lab_format.pdf)
+* [Merlin Questions](https://github.com/CSTR-Edinburgh/merlin/tree/master/misc/questions)
 
-设计此问题集的规则具体参见 `【问题集设计规则】 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/segment_feature.md>`_
+设计此问题集的规则具体参见 [问题集设计规则](https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/segment_feature.md)
 
 问题集中的中英文对照
 
@@ -549,9 +551,7 @@ CQS "Num_Prosodic-Word_in_Utterance"
 CQS "Num_Prosodic-Pharse_in_Utterance"	                     
     
 ### 重音问题  
-    
-如果考虑重音，下面关于重音的示例问题，可以参照 `HTS label <http://www.cs.columbia.edu/~ecooper/tts/lab_format.pdf>`_ 以及 `Merlin Questions <https://github.com/CSTR-Edinburgh/merlin/tree/master/misc/questions>`_ 设计相关的数量，位置问题  
-    
+   
 QS "C-Stressed"  
 QS "L-Stressed"  
 QS "R-Stressed"  
