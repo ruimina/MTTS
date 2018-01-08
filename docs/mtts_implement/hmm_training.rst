@@ -93,13 +93,11 @@
 
 目前笔者设计了未经优化的问题集，后面可以根据决策树的情况进行优化。
 
-主要依据参考文献[3]以及文献[24][7]
-
-
-问题集(Question Set)即是决策树中条件判断的设计。问题集通常很大，由几百个判断条件组成。 `一个典型的英文问题集文件(merlin)<https://github.com/CSTR-Edinburgh/merlin/blob/master/misc/questions/questions-radio_dnn_416.hed>`_
+问题集(Question Set)即是决策树中条件判断的设计。问题集通常很大，由几百个判断条件组成。 `一个典型的英文问题集文件(merlin) <https://github.com/CSTR-Edinburgh/merlin/blob/master/misc/questions/questions-radio_dnn_416.hed>`_
 
 
 问题集的设计依赖于不同语言的语言学知识，而且与上下文标注文件相匹配，改变上下文标注方法也需要相应地改变问题集，对于中文语音合成而言，问题集的设计的规则有:
+
 * 前前个，前个，当前，下个，下下个声韵母分别是某个合成基元吗，合成基元共有65个(23声母+39韵母+3静音)，例如判断是否是元音a QS "LL-a" QS "L-a" QS "C-a" QS "R-a" QS "RR-a"
 * 声母特征划分，例如声母可以划分成塞音，擦音，鼻音，唇音等，声母特征划分24个
 * 韵母特征划分，例如韵母可以划分成单韵母，复合韵母，分别包含aeiouv的韵母，韵母特征划分8个
@@ -107,7 +105,9 @@
 * 韵律特征划分，如是否是重音，重音和韵律词/短语的位置数量
 * 位置和数量特征划分
 
-具体参见 `【问题集设计规则】 <https://github.com/jackiexiao/mtts/docs/mddocs/segment_feature.md>`_
+具体参见 
+    * `【问题集设计规则】 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/segment_feature.md>`_
+    * `【问题集示例】 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/question.md>`_
 
 对于三音素模型而言，对于每个划分的特征，都会产生3个判断条件，该音素是否满足条件，它的左音素（声韵母）和右音素（声韵母）是否满足条件，有时会扩展到左左音素和右右音素的情况，这样就有5个问题。其中，每个问题都是以 QS 命令开头，问题集的答案可以有多个，中间以逗号隔开，答案是一个包含通配符的字符串。当问题表达式为真时，该字符串成功匹配标注文件中的某一行标注。格式如：
 
@@ -141,7 +141,7 @@ QS "C_POS==a"      当前单元是否为形容词
 QS "C_Toner==1"    当前单元音调是否为一声
 ================== =====================
 
-
+主要参考文献[3]以及文献[24][7]
 
 参考微软论文:HMM-based Mandarin Singing Voice Synthesis Using Tailored Synthesis Units and Question Sets
 

@@ -17,10 +17,24 @@
 本项目选用的合成基元为
 
 * 声母 | 21个声母+wy（共23个）
-* 韵母 | 38个韵母(由于在普通话中，ê只在语气词“欸”中单用，这里省略了这个韵母)
+* 韵母 | 39个韵母
 * 静音 | sil pau sp 
 
 [contro] sil(silence) 表示句首和句尾的静音，pau(pause) 表示由逗号，顿号造成的停顿，句中其他的短停顿为sp(short pause)
+
+声母（23个）
+    b p m f d t n l g k h j q x zh ch sh r z c s y w 
+
+韵母（39个）
+    * 单韵母 a、o、e、 ê、i、u、ü、-i（前）、-i（后）、er
+    * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 üe、iao 、iou、uai、uei
+    * 鼻韵母 an、ian、uan、 üan 、en、in、uen、 ün 、ang、iang、uang、eng、ing、ueng、ong、iong
+
+韵母（39个）（转换标注后）
+    * 单韵母 a、o、e、ee、i、u、v、ic、ih、er
+    * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 ve、iao 、iou、uai、uei
+    * 鼻韵母 an、ian、uan、 van 、en、in、uen、 vn 、ang、iang、uang、eng、ing、ueng、ong、iong
+
 
 **改进方法——引入零声母(_A _E _I _O _U _V)**
 
@@ -53,8 +67,9 @@
 本项目自行设计了上下文设计规则以及问题集，尽可能保证了设计规则的扩展性和全面性，如下
 
 * `不包含韵律特征的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_demo_label.md>`_
-* `包含韵律特征的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_simple_label.md>`_
-* `包含韵律特征和重音的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_complex_label.md>`_
+* `包含韵律特征的简单上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_simple_label.md>`_
+* `包含韵律特征的复杂上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_complex_label.md>`_
+* `包含韵律特征和重音的复杂上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_most_complex_label.md>`_
 
 
 3.6.3 基于决策树的聚类
@@ -78,25 +93,19 @@
 
 目前笔者设计了未经优化的问题集，后面可以根据决策树的情况进行优化。
 
-主要依据参考文献[3]以及文献[24][7]
-
-
-问题集(Question Set)即是决策树中条件判断的设计。问题集通常很大，由几百个判断条件组成。 `一个典型的英文问题集文件(merlin)<https://github.com/CSTR-Edinburgh/merlin/blob/master/misc/questions/questions-radio_dnn_416.hed>`_
+问题集(Question Set)即是决策树中条件判断的设计。问题集通常很大，由几百个判断条件组成。 `一个典型的英文问题集文件(merlin) <https://github.com/CSTR-Edinburgh/merlin/blob/master/misc/questions/questions-radio_dnn_416.hed>`_
 
 
 问题集的设计依赖于不同语言的语言学知识，而且与上下文标注文件相匹配，改变上下文标注方法也需要相应地改变问题集，对于中文语音合成而言，问题集的设计的规则有:
-* 前前个，前个，当前，下个，下下个声韵母分别是某个合成基元吗，合成基元共有64个，例如判断是否是元音a QS "LL-a" QS "L-a" QS "C-a" QS "R-a" QS "RR-a"
+
+* 前前个，前个，当前，下个，下下个声韵母分别是某个合成基元吗，合成基元共有65个(23声母+39韵母+3静音)，例如判断是否是元音a QS "LL-a" QS "L-a" QS "C-a" QS "R-a" QS "RR-a"
 * 声母特征划分，例如声母可以划分成塞音，擦音，鼻音，唇音等，声母特征划分24个
 * 韵母特征划分，例如韵母可以划分成单韵母，复合韵母，分别包含aeiouv的韵母，韵母特征划分8个
 * 其他信息划分，词性划分，26个词性; 声调类型，5个; 是否是声母或者韵母或者静音，3个
-* 韵律特征划分，如是否是重音
-* 位置特征划分，
+* 韵律特征划分，如是否是重音，重音和韵律词/短语的位置数量
+* 位置和数量特征划分
 
-L0为音节，L1为词，L2为韵律词，L3为韵律短语，L4为语调短语，L5为语句
-
-那么就有
-
-具体参见 `【划分特征】 <../mddocs/segment_feature.md>`_
+具体参见 `【问题集设计规则】 <https://github.com/jackiexiao/mtts/docs/mddocs/segment_feature.md>`_
 
 对于三音素模型而言，对于每个划分的特征，都会产生3个判断条件，该音素是否满足条件，它的左音素（声韵母）和右音素（声韵母）是否满足条件，有时会扩展到左左音素和右右音素的情况，这样就有5个问题。其中，每个问题都是以 QS 命令开头，问题集的答案可以有多个，中间以逗号隔开，答案是一个包含通配符的字符串。当问题表达式为真时，该字符串成功匹配标注文件中的某一行标注。格式如：
 
@@ -110,6 +119,27 @@ QS "LL==Fricative"    {f^*,s^*,sh^*,x^*,h^*,lh^*,hy^*,hh^*}
 * QS 'L_Fricative'
 * QS 'R_Fricative'
 
+更多示例：
+
+================== =====================
+Question           含义
+================== =====================
+QS "C_a"           当前单元是否为韵母a
+QS "L_Fricative"   前接单元是否为擦音
+QS "R_Fricative"   后接单元是否为擦音
+QS "C_Fricative"   当前单元是否为擦音
+QS "C_Stop"        当前单元是否为塞音
+QS "C_Nasal"       当前单元是否为鼻音
+QS "C_Labial"      当前单元是否为唇音
+QS "C_Apieal"      当前单元是否为顶音
+QS "C_TypeA"       含有a的韵母
+QS "C_TypeE"       含有e的韵母
+QS "C_TypeI"       含有i的韵母
+QS "C_POS==a"      当前单元是否为形容词
+QS "C_Toner==1"    当前单元音调是否为一声
+================== =====================
+
+主要参考文献[3]以及文献[24][7]
 
 参考微软论文:HMM-based Mandarin Singing Voice Synthesis Using Tailored Synthesis Units and Question Sets
 
