@@ -408,7 +408,7 @@ CQS "Pos_C-Syl_in_C-Prosodic-Phrase(Bw)"               {-(\d+)-}
 CQS "Pos_C-Syl_in_Utterance(Fw)"                       {/B:(\d+)+}
 CQS "Pos_C-Syl_in_Utterance(Bw)"                       {+(\d+)@}
 CQS "Pos_C-Word_in_C-Prosodic-Word(Fw)"                {&(\d+)^}
-CQS "Pos_C-Word_in_C-Prosodic-Word(Bw)"                {^(\d+)_}
+CQS "Pos_C-Word_in_C-Prosodic-Word(Bw)"                {^(\d+)!}
 CQS "Pos_C-Prosodic-Word_in_C-Prosodic-Phrase(Fw)"     {&(\d+)-}
 CQS "Pos_C-Prosodic-Word_in_C-Prosodic-Phrase(Bw)"     {-(\d+)&}
 CQS "Pos_C-Prosodic-Phrase_in_Utterance(Fw)"           {!(\d+)-}
