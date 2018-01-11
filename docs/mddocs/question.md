@@ -3,20 +3,38 @@
 设置此中文上下文标注和对应问题集时参考了 
 * [HTS label](http://www.cs.columbia.edu/~ecooper/tts/lab_format.pdf)
 * [Merlin Questions](https://github.com/CSTR-Edinburgh/merlin/tree/master/misc/questions)
-
-设计此问题集的规则具体参见 [问题集设计规则](https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/segment_feature.md)
+* [本项目使用的上下文相关标注](https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/mandarin_label.md)
 
 问题集中的中英文对照
 
-initial：声母
-final: 韵母
-syllable(abbr: syl): 音节
-character: 字
-word : 词
-prosodic word: 韵律词
-prosodic phrase: 韵律短语
-intonational phrase: 语调短语
+* initial：声母
+* final: 韵母
+* syllable(abbr: syl): 音节
+* character: 字
+* word : 词
+* prosodic word: 韵律词
+* prosodic phrase: 韵律短语
+* intonational phrase: 语调短语
 
+### 问题集设计规则
+
+问题集的设计依赖于不同语言的语言学知识，而且与上下文标注文件相匹配，改变上下文标注方法也需要相应地改变问题集，对于中文语音合成而言，问题集的设计的规则有:
+* 前前个，前个，当前，下个，下下个声韵母分别是某个合成基元吗，合成基元共有65个，例如判断是否是元音a QS "LL-a" QS "L-a" QS "C-a" QS "R-a" QS "RR-a"
+* 声母特征划分，例如声母可以划分成塞音，擦音，鼻音，唇音等，声母特征划分24个
+* 韵母特征划分，例如韵母可以划分成单韵母，复合韵母，分别包含aeiouv的韵母，韵母特征划分8个
+* 其他信息划分，词性划分，26个词性; 声调类型，5个; 是否是声母或者韵母或者静音，3个
+* 韵律特征划分，如是否是重音，重音和韵律词/短语的位置数量
+* 位置和数量特征划分
+
+### 可能的改进
+问题集中基元加上声调，例如
+```
+QS "C-a1"
+```
+
+### 问题集的优化
+
+问题集中问题的数量并不是越多越好（经验之谈），具体优化方法[todo]
 
 ### 声母的划分特征
 
@@ -46,33 +64,56 @@ Apical End2|顶后音2|zh，ch, sh
 Tongue Top|舌前音|j，q，x
 Tongue Root|舌根音|g, k，h
 Zero|零声母|y w
-XFuyin|全部声母（包含零声母）|略
-Fuyin|全部声母（不包含零声母）|略
 
-### 韵母的划分特征[contro：文献3中的划分有点奇怪]
+### 韵母的划分特征
 
 划分特征|描述|基元列表
 -------- | ------- | -------
-Single Yun|单韵母|a，i，u，e，ee, o，v, ic，ih
-Com Yun|复合韵母|an，ai，ang....vn
+Simple_Final|单韵母|a，i，u，e，ea, o，v, ic，ih, er
+Compound_Final|复韵母| ai、ei、ao、ou、ia、ie、ua、uo、 ve、iao 、iou、uai、uei
+Nasal_Vowel|鼻韵母| an、ian、uan、 van 、en、in、uen、 vn 、ang、iang、uang、eng、ing、ueng、ong、iong
+Anterior_Nasal_Vowel|前鼻韵母|an、ian、uan、 van 、en、in、uen、 vn
+Posterior_Nasal_Vowel|后鼻韵母|ang、iang、uang、eng、ing、ueng、ong、iong
 Type A|含有a的韵母|a, ia, an, ang, ai, ua, ao
-Type E|含有e的韵母|e，ie，ve，ei, uei
+Type E|含有e的韵母|e，ie，ve，ei, uei, ea, er
 Type I|含有I的韵母|i，ai，ei，uei, ia, ian, iang，iao， ie, in, ing, iong, iou
 Type O|含0的韵母|o, ao, uo, ou, ong, iou
 Type U|含u的韵母|u, ua, uen, ueng, uo, iou
 Type V|含V的韵母|v，vn, ve
 
-   
+### 声韵母
+Initial|声母| b p m f d t n l g k h j q x zh ch sh r z c s y w 
+Final|韵母|a、o、e、ea、i、u、v、ic、ih、er、ai、ei、ao、ou、ia、ie、ua、uo、 ve、iao 、iou、uai、uei、an、ian、uan、 van 、en、in、uen、 vn 、ang、iang、uang、eng、ing、ueng、ong、iong
+Silence|静音| sil, pau, sp
+
+### 位置数量，韵律特征问题
+
+主要参见上下文相关标注进行对应的问题集设计
+
+### 重音
+
+如果考虑重音，下面关于重音的示例问题，可以参照 `HTS label <http://www.cs.columbia.edu/~ecooper/tts/lab_format.pdf>`_ 以及 `Merlin Questions <https://github.com/CSTR-Edinburgh/merlin/tree/master/misc/questions>`_ 设计相关的数量，位置问题
+
+例如
+* 前后、当下基元是否是重音
+* 韵律短语中，当前音节前面的重音有多少个
+* 重音的位置
+
+#问题集
+  
 ### 韵母  
-QS "C-Single_Final"  
-QS "C-Com_Final"  
+QS "C-Simple_Final"  
+QS "C-Compound_Final"  
+QS "C-Nasal_Vowel"
+QS "C-Anterior_Nasal_Vowel"
+QS "C-Posterior_Nasal_Vowel"
 QS "C-TypeA"  
 QS "C-TypeE"  
 QS "C-TypeI"  
 QS "C-TypeO"  
 QS "C-TypeU"  
 QS "C-TypeV"  
-    
+
 ### 声母  
 QS "C-Stop"  
 QS "C-Aspirated_Stop"  
@@ -98,8 +139,6 @@ QS "C-Apical_End2"
 QS "C-Tongue_Top"  
 QS "C-Tongue_Root"  
 QS "C-Zero"  
-QS "C-XFuyin"  
-QS "C-Fuyin"  
     
     
 ### 判断是否是声母，韵母，精音(sil+pau+sp)  
@@ -112,25 +151,7 @@ QS "L-silence"
 QS "R-initial"  
 QS "R-final"  
 QS "R-silence"  
-    
-### 声调  
-QS "C-Syl-Toner==1"  
-QS "C-Syl-Toner==2"  
-QS "C-Syl-Toner==3"  
-QS "C-Syl-Toner==4"  
-QS "C-Syl-Toner==5"  
-QS "L-Syl-Toner==1"  
-QS "L-Syl-Toner==2"  
-QS "L-Syl-Toner==3"  
-QS "L-Syl-Toner==4"  
-QS "L-Syl-Toner==5"  
-QS "R-Syl-Toner==1"  
-QS "R-Syl-Toner==2"  
-QS "R-Syl-Toner==3"  
-QS "R-Syl-Toner==4"  
-QS "R-Syl-Toner==5"  
-    
-    
+        
 ### 词性部分  
 QS "C-POS==a"  
 QS "C-POS==b"  
@@ -187,7 +208,7 @@ QS "C-w"
 QS "C-a"  
 QS "C-o"  
 QS "C-e"  
-QS "C-ee"  
+QS "C-ea"  
 QS "C-i"  
 QS "C-u"  
 QS "C-v"  
@@ -253,7 +274,7 @@ QS "L-w"
 QS "L-a"  
 QS "L-o"  
 QS "L-e"  
-QS "L-ee"  
+QS "L-ea"  
 QS "L-i"  
 QS "L-u"  
 QS "L-v"  
@@ -320,7 +341,7 @@ QS "R-w"
 QS "R-a"  
 QS "R-o"  
 QS "R-e"  
-QS "R-ee"  
+QS "R-ea"  
 QS "R-i"  
 QS "R-u"  
 QS "R-v"  
@@ -387,7 +408,7 @@ QS "LL-w"
 QS "LL-a"  
 QS "LL-o"  
 QS "LL-e"  
-QS "LL-ee"  
+QS "LL-ea"  
 QS "LL-i"  
 QS "LL-u"  
 QS "LL-v"  
@@ -455,7 +476,7 @@ QS "RR-w"
 QS "RR-a"  
 QS "RR-o"  
 QS "RR-e"  
-QS "RR-ee"  
+QS "RR-ea"  
 QS "RR-i"  
 QS "RR-u"  
 QS "RR-v"  
@@ -494,10 +515,18 @@ QS "RR-iong"
 QS "RR-sil"  
 QS "RR-sp"  
 QS "RR-pau"  
-    
-    
-    
-    
+     
+### 重音问题  
+重音为1，不重音为0
+QS "C-Stressed"  
+QS "L-Stressed"  
+QS "R-Stressed"     
+     
+### 声调  
+CQS "Toner_C-Syl"
+CQS "Toner_L-Syl"
+CQS "Toner_R-Syl"
+ 
 ### 位置问题  
 CQS "Pos_C-Syl_in_C-Word(Fw)"	                     
 CQS "Pos_C-Syl_in_C-Word(Bw)"	                     
@@ -549,16 +578,4 @@ CQS "Num_Syl_in_Utterance"
 CQS "Num_Word_in_Utterance"	                     
 CQS "Num_Prosodic-Word_in_Utterance"	                     
 CQS "Num_Prosodic-Pharse_in_Utterance"	                     
-    
-### 重音问题  
-   
-QS "C-Stressed"  
-QS "L-Stressed"  
-QS "R-Stressed"  
-    
-CQS "Num-StressedSyl_before_C-Syl_in_C-Prosodic-Phrase"	    
-CQS "Num-StressedSyl_after_C-Syl_in_C-Prosodic-Phrase"		  
-    
-CQS "Num-Syl_from_prev-StressedSyl" 	              
-CQS "Num-Syl_from_next-StressedSyl"	               
     

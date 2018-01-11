@@ -18,10 +18,10 @@ FrontEnd
     16个整体认读音节分别是：zhi 、chi、shi、ri、zi、ci、si、yi、wu、yu、ye、yue、yuan、yin 、yun、ying，但是要注意没有yan，因为yan并不发作an音
 
 声母
-    21个声母没有什么争议，如果说有22个声母，一般指多加一个零声母，yw都属于零声母。
+    21个声母没有什么争议，如果说有22个声母，一般指多加一个零声母，yw都属于零声母。如果用23个声母，则是21声母+yw两个零声母，如果用27个声母，则是将不同情况下的yw零声母分成6种情况，标注成aa, ee, ii, oo, uu, vv，即21+6=27个声母（具体见hmm训练，合成基元的选择一节）
 
 韵母
-    [contro]国家汉语拼音方案中韵母数量为35个，但另一说为39个（如百度百科），在原国家汉语拼音方案上增加了-i（前）、-i（后）、er、ê。
+    国家汉语拼音方案中韵母数量为35个，但另一说为39个（如百度百科），在原国家汉语拼音方案上增加了-i（前）、-i（后）、er、ê。
 
 下面新加的4个元音做简要解释
     * ê[ε] 在普通话中，ê只在语气词“欸”中单用【因此一些项目忽略了这个单韵母，即38个韵母】。ê不与任何辅音声母相拼，只构成复韵母ie、üe，并在书写时省去上面的附加符号“ˆ”。
@@ -34,7 +34,7 @@ FrontEnd
 1.第一类是国家规定的方案，也就是日常生活中用到的风格，规定了声母21个，其韵母表中列出35个韵母，具体参见中华人民共和国教育部发布的 `汉语拼音方案 <http://www.moe.edu.cn/s78/A19/yxs_left/moe_810/s230/195802/t19580201_186000.html>`_
 
 2.第二类是方便系统处理的拼音标注风格，不同项目有不同的注音风格，区别主要在于
-    * 对y w的处理，有的项目为了方便处理，也将yw视为声母，有的则会将对应的yw传换成实际发音，如ye,yan,yang（整体认读音节）等改成ie,ian,iang
+    * 对y w的处理，有的项目为了方便处理，也将yw视为声母，有的则会将对应的yw传换成实际发音，如ye,yan,yang（整体认读音节）等改成ie,ian,iang，而不适用yw
     * 是否将整体认读音节还原成单个韵母或声母
     * ju qu xu的标注是否转为实际发音标注，即jv qv xv
     * yuan yue yun的标注是否转成yvan yve yvn
@@ -42,7 +42,7 @@ FrontEnd
     * 儿化音是否简化标注，例如'花儿'，汉语拼音方案中标注为'huar'，一般我们将其转为'hua er'
 
 本项目使用的风格
-    * 将yw视作声母
+    * 将yw视作声母，即将ia ua ie等等单独发音视为ya wa ye
     * 不把整体认读音节还原成单个韵母或声母
     * 标注为 jv qv xv
     * 标注为 yvan yve yvn
@@ -60,7 +60,7 @@ FrontEnd
     * 鼻韵母 an、ian、uan、 üan 、en、in、uen、 ün 、ang、iang、uang、eng、ing、ueng、ong、iong
 
 韵母（39个）（转换标注后）
-    * 单韵母 a、o、e、ee、i、u、v、ic、ih、er
+    * 单韵母 a、o、e、ea、i、u、v、ic、ih、er
     * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 ve、iao 、iou、uai、uei
     * 鼻韵母 an、ian、uan、 van 、en、in、uen、 vn 、ang、iang、uang、eng、ing、ueng、ong、iong
 
@@ -68,6 +68,11 @@ FrontEnd
 注意：
 * pypinyin中使用的是 yuan ju lun
 * 本文语料库使用的是 yvan jv lun，语料库中音素标注将yw视作声母
+
+另外一种推荐的方案是使用27个声母，即去掉yw
+
+声母（27个）
+    b p m f d t n l g k h j q x zh ch sh r z c s aa ee ii oo uu vv
 
 3.2.2 多音字的处理
 -----------------------------------------------------

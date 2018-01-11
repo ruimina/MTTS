@@ -105,7 +105,9 @@
 * 韵律特征划分，如是否是重音，重音和韵律词/短语的位置数量
 * 位置和数量特征划分
 
-具体参见 `【问题集设计规则】 <https://github.com/jackiexiao/mtts/docs/mddocs/segment_feature.md>`_
+具体参见 
+    * `【问题集设计规则】 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/segment_feature.md>`_
+    * `【问题集示例】 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/question.md>`_
 
 对于三音素模型而言，对于每个划分的特征，都会产生3个判断条件，该音素是否满足条件，它的左音素（声韵母）和右音素（声韵母）是否满足条件，有时会扩展到左左音素和右右音素的情况，这样就有5个问题。其中，每个问题都是以 QS 命令开头，问题集的答案可以有多个，中间以逗号隔开，答案是一个包含通配符的字符串。当问题表达式为真时，该字符串成功匹配标注文件中的某一行标注。格式如：
 

@@ -111,11 +111,11 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id13">3.6.3 基于决策树的聚类</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">3.6.4 问题集的设计</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">3.6.5 决策树的构建</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">3.6.6 HMM拓扑结构以及声学参数结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">3.6.6 建模参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">3.6.7 状态时长模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">3.6.8 基音周期模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">3.6.5 决策树的构建</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">3.6.6 HMM拓扑结构以及声学参数结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">3.6.6 建模参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">3.6.7 状态时长模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">3.6.8 基音周期模型</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="merlin.html">3.7 Merlin使用手册</a></li>
@@ -282,7 +282,14 @@
 <li>韵律特征划分，如是否是重音，重音和韵律词/短语的位置数量</li>
 <li>位置和数量特征划分</li>
 </ul>
-<p>具体参见 <a class="reference external" href="https://github.com/jackiexiao/mtts/docs/mddocs/segment_feature.md">【问题集设计规则】</a></p>
+<dl class="docutils">
+<dt>具体参见</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/segment_feature.md">【问题集设计规则】</a></li>
+<li><a class="reference external" href="https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/question.md">【问题集示例】</a></li>
+</ul>
+</dd>
+</dl>
 <p>对于三音素模型而言，对于每个划分的特征，都会产生3个判断条件，该音素是否满足条件，它的左音素（声韵母）和右音素（声韵母）是否满足条件，有时会扩展到左左音素和右右音素的情况，这样就有5个问题。其中，每个问题都是以 QS 命令开头，问题集的答案可以有多个，中间以逗号隔开，答案是一个包含通配符的字符串。当问题表达式为真时，该字符串成功匹配标注文件中的某一行标注。格式如：</p>
 <p>QS  问题表达式 {答案 1，答案 2，答案 3，……}</p>
 <p>QS “LL==Fricative”    {f^*,s^*,sh^*,x^*,h^*,lh^*,hy^*,hh^*}</p>
@@ -356,11 +363,11 @@
 <li>Note: The absolute/relative pitch of the note; the key, beat, and tempo of the note; the length of the note by syllable/0.1 second/thirty-second note; the position of the current note in the current measure by syllable/0.1 second/ thirty-second note; and the position of the current note in the current phrase syllable/0.1 second/thirty-second note</li>
 </ol>
 </div>
-<div class="section" id="id16">
-<h2>3.6.5 决策树的构建<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="id17">
-<h2>3.6.6 HMM拓扑结构以及声学参数结构<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h2>3.6.5 决策树的构建<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id18">
+<h2>3.6.6 HMM拓扑结构以及声学参数结构<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <p><strong>基元状态的拓扑结构</strong></p>
 <p>本文选择了从左至右无跳转的HMM拓扑结构，其他结构详见[3]3.1.2节</p>
 <p>(begin) 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7 (end)</p>
@@ -368,8 +375,8 @@
 <p><strong>声学参数的结构</strong></p>
 <p>TODO，可参考[3]</p>
 </div>
-<div class="section" id="id18">
-<h2>3.6.6 建模参数<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id19">
+<h2>3.6.6 建模参数<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <p>[6]</p>
 <p>在安装Linux的计算机上配置好相关的依赖环境后，我们在训练数据之前，还需要对HMM模型的建模参数进行配置，具体的参数配置如表</p>
 <p>表4-2 HMM建模的参数配置表</p>
@@ -390,11 +397,11 @@
 <li>为了描述语音信号在短时间的平稳特性，我们采用了汉明窗(Hamming)来 对信号进行加窗分帧，对每帧的语音信号进行特征计算。</li>
 </ol>
 </div>
-<div class="section" id="id19">
-<h2>3.6.7 状态时长模型<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="id20">
-<h2>3.6.8 基音周期模型<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<h2>3.6.7 状态时长模型<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id21">
+<h2>3.6.8 基音周期模型<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

@@ -1,16 +1,14 @@
-3.6 HMM训练
+3.6 HMM训练[doing]
 ================
 3.6.1 合成基元以及其状态数量的选择
 -----------------------------------------
 **如何选取合成基元**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[3]对于汉语语音系统而言，常用的基本基元有音节、声韵母和音素。由于汉语有410个无调音节，如考虑语调则有1300多个音节（具体数量上不同词典的标准都不相同，这里取约数），在进行上下文无关的建模时，选用音节作为基元可以取得比较好的性能。[todo 可以试一下使用音节来作为合成单元，看看合成效果]但如果考虑上下文相关的变化，则会由于基元数目太多而导致模型无法实现。而声韵母（声母21个，韵母todo个）与音素的数目都相对较少，因此可以用来作上下文相关模型的基元。
+对于汉语语音系统而言，常用的基本基元有音节、声韵母和音素。由于汉语有410个无调音节，如考虑语调则有1300多个音节（具体数量上不同词典的标准都不相同，这里取约数），在进行上下文无关的建模时，选用音节作为基元可以取得比较好的性能。[todo 可以试一下使用音节来作为合成单元，看看合成效果]但如果考虑上下文相关的变化，则会由于基元数目太多而导致模型无法实现。而声韵母（声母21个，韵母todo个）与音素的数目都相对较少，因此可以用来作上下文相关模型的基元。[3]
 
-汉语大概有35个音素，但是音素并没有反映出汉语语音的特点，而且，相对于声韵母，音素显得十分不稳定，这就给标注带来了困难，进而影响声学建模，因此，音素也不适合作为上下文相关的合成基元。[3]
+汉语大概有35个音素，但是音素并没有反映出汉语语音的特点，而且，相对于声韵母，音素显得十分不稳定，这就给标注带来了困难，进而影响声学建模，因此，音素也不适合作为上下文相关的合成基元。[3] 这里的音素单个发音的字母，例如可以将拼音ming分成 m i n g四个音素
 
-[todo]有没有用音节来做基元的，音素指的是？ming分成 m i n g四个音素？
-
-这里选择音节和声韵母两种，为了模拟发音中的停顿，可以将短时停顿和长时停顿看做是合成基元，此外，将句子开始前和结束时的静音sil也当做合成基元
+这里选取声韵母作为基元，同时为了模拟发音中的停顿，可以将短时停顿和长时停顿看做是合成基元，此外，将句子开始前和结束时的静音sil也当做合成基元
 
 **合成基元的列表**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -20,7 +18,7 @@
 * 韵母 | 39个韵母
 * 静音 | sil pau sp 
 
-[contro] sil(silence) 表示句首和句尾的静音，pau(pause) 表示由逗号，顿号造成的停顿，句中其他的短停顿为sp(short pause)
+sil(silence) 表示句首和句尾的静音，pau(pause) 表示由逗号，顿号造成的停顿，句中其他的短停顿为sp(short pause)
 
 声母（23个）
     b p m f d t n l g k h j q x zh ch sh r z c s y w 
@@ -31,7 +29,7 @@
     * 鼻韵母 an、ian、uan、 üan 、en、in、uen、 ün 、ang、iang、uang、eng、ing、ueng、ong、iong
 
 韵母（39个）（转换标注后）
-    * 单韵母 a、o、e、ee、i、u、v、ic、ih、er
+    * 单韵母 a、o、e、ea、i、u、v、ic、ih、er
     * 复韵母 ai、ei、ao、ou、ia、ie、ua、uo、 ve、iao 、iou、uai、uei
     * 鼻韵母 an、ian、uan、 van 、en、in、uen、 vn 、ang、iang、uang、eng、ing、ueng、ong、iong
 
@@ -41,6 +39,10 @@
 参考自文献[3]，但本项目没有采用
 
 [contro] 6个零声母（）的引入是为了减少上下文相关的tri-IF数目，这样就可以使得每个音节都是由声母和韵母组成，原先一些只有韵母音节可以被视作是声母和韵母的结构，这样一来，基元就只有 声母-韵母-声母 以及 韵母-声母-韵母 两种结构，而不会出现两个韵母相邻的情况，进而明显减少了上下文相关的基元。[3]
+
+如果这么做的话就是21+6=27个声母，可以将零声母标记成 aa, ee, ii, oo, uu, vv，一是将yw替换，二是将一个韵母组成的音节手动添加上零声母，举例
+    * ye,yan,yang（整体认读音节）标注成——ii ie, ii ian, ii iang （ie, ian, iang是真实发音的韵母）
+    * ao an ou 熬 安 欧, 标记成 aa ao, aa an, oo ou
 
 **基元状态数量的选择**
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,12 +66,11 @@
 
 本项目的上下文相关标注参考了文献[13]，其规则见 `面向汉语统计参数语音合成的标注生成方法 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_example_label.md>`_
 
-本项目自行设计了上下文设计规则以及问题集，尽可能保证了设计规则的扩展性和全面性，如下
+本项目自行设计了上下文设计规则以及问题集，尽可能保证了设计规则的可扩展性
 
-* `不包含韵律特征的上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_demo_label.md>`_
-* `包含韵律特征的简单上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_simple_label.md>`_
-* `包含韵律特征的复杂上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_complex_label.md>`_
-* `包含韵律特征和重音的复杂上下文标注 <https://github.com/Jackiexiao/MTTS/tree/master/docs/mddocs/mandarin_most_complex_label.md>`_
+* `上下文相关标注 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/mandarin_label.md>`_
+* `问题集设计规则和示例 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/question.md>`_
+* `完整问题集文件 <https://github.com/Jackiexiao/MTTS/blob/master/docs/misc/23_initial_39_final_3_sil/question.hed>`_
 
 
 3.6.3 基于决策树的聚类
@@ -92,6 +93,8 @@
 -----------------------------------------
 
 目前笔者设计了未经优化的问题集，后面可以根据决策树的情况进行优化。
+* `问题集设计规则和示例 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/question.md>`_
+* `完整问题集文件 <https://github.com/Jackiexiao/MTTS/blob/master/docs/misc/23_initial_39_final_3_sil/question.hed>`_
 
 问题集(Question Set)即是决策树中条件判断的设计。问题集通常很大，由几百个判断条件组成。 `一个典型的英文问题集文件(merlin) <https://github.com/CSTR-Edinburgh/merlin/blob/master/misc/questions/questions-radio_dnn_416.hed>`_
 
@@ -104,10 +107,6 @@
 * 其他信息划分，词性划分，26个词性; 声调类型，5个; 是否是声母或者韵母或者静音，3个
 * 韵律特征划分，如是否是重音，重音和韵律词/短语的位置数量
 * 位置和数量特征划分
-
-具体参见 
-    * `【问题集设计规则】 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/segment_feature.md>`_
-    * `【问题集示例】 <https://github.com/Jackiexiao/MTTS/blob/master/docs/mddocs/question.md>`_
 
 对于三音素模型而言，对于每个划分的特征，都会产生3个判断条件，该音素是否满足条件，它的左音素（声韵母）和右音素（声韵母）是否满足条件，有时会扩展到左左音素和右右音素的情况，这样就有5个问题。其中，每个问题都是以 QS 命令开头，问题集的答案可以有多个，中间以逗号隔开，答案是一个包含通配符的字符串。当问题表达式为真时，该字符串成功匹配标注文件中的某一行标注。格式如：
 
@@ -141,30 +140,13 @@ QS "C_POS==a"      当前单元是否为形容词
 QS "C_Toner==1"    当前单元音调是否为一声
 ================== =====================
 
-主要参考文献[3]以及文献[24][7]
-
-参考微软论文:HMM-based Mandarin Singing Voice Synthesis Using Tailored Synthesis Units and Question Sets
-
-**Question Set for Decision Trees**
-
-Based on unit definition and contextual factors, we define five categories for the questions in the question set. The five categories of the question set are sub-syllable, syllable, phrase, song, and note. The details of the question set are described as follows.
-
-1. Sub-syllable: (current sub-syllable, preceding one and two sub-syllables, and succeeding one and two sub-syllables) Initial/final, final with medial, long model, articulation category of the initial, and pronunciation category of the final
-
-2. Syllable: The number of sub-syllables in a syllable and the position of the syllable in the note
-
-3. Phrase: The number of sub-syllables/syllables in a phrase
-
-4. Song: Average number of sub-syllables/syllables in each measure of the song and the number of phrases in this song
-
-5. Note: The absolute/relative pitch of the note; the key, beat, and tempo of the note; the length of the note by syllable/0.1 second/thirty-second note; the position of the current note in the current measure by syllable/0.1 second/ thirty-second note; and the position of the current note in the current phrase syllable/0.1 second/thirty-second note 
+主要参考文献[3][7][24][28]
 
 3.6.5 决策树的构建
 -----------------------------------------
 
 3.6.6 HMM拓扑结构以及声学参数结构
 -----------------------------------------
-
 
 **基元状态的拓扑结构**
 
