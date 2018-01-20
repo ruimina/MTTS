@@ -10,6 +10,12 @@ Merlin只能在unix类系统下运行，使用Python，并用theano作为后端
 
 Merlin的Python语言采用的是Python2.7编写（更新：merlin已经支持python2.7-3.6 的版本），所以我们需要在Python2.7的环境下运行Merlin，为避免python不同版本之间的冲突，我们采用Anaconda对Python运行环境进行管理。  
 
+Anaconda `国内镜像下载地址<https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/>`_ 下载完毕后
+
+::
+
+    bash Anacoda......sh
+
 使用Anaconda创建Merlin运行环境具体操作如下：  
 
 打开终端，使用下面命令查看一下现有python环境  
@@ -34,11 +40,13 @@ Merlin的Python语言采用的是Python2.7编写（更新：merlin已经支持py
 
 ::
 
-    sudo apt-get install csh
+    sudo apt-get install csh cmake
     pip install numpy scipy matplotlib lxml theano bandmat
     git clone https://github.com/CSTR-Edinburgh/merlin.git
     cd merlin/tools
     ./compile_tools.sh
+
+留意程序的输出结果，一些程序如果没有成功安装会影响到后面的结果
 
 如果一切顺利，此时你已经成功地安装了Merlin，但要注意的是Merlin不是一个完整的TTS系统。它提供了核心的声学建模功能：语言特征矢量化，声学和语言特征归一化，神经网络声学模型训练和生成。但语音合成的前端（文本处理器）以及声码器需要另外配置安装。此外，Merlin目前仅提供了英文的语音合成。  
 
