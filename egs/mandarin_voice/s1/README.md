@@ -1,10 +1,12 @@
 # Mandarin Voice
 
-(1) Copy your file to 
+(1) Create the following dir and copy your file to dir (suppose current dir is merlin/egs/mandarin_voice/s1/)
 
 * database/wav 
 * database/labels/label_phone_align 
 * database/prompt-lab 
+
+* cp your own question file (like questions-mandarin.hed) to ~/merlin/misc/questions/
 
 
 (2) modify params as per your own data in 01_setup.sh file, especially
