@@ -7,13 +7,15 @@ Mandarin/Chinese Text to Speech based on statistical parametric speech synthesis
 [中文语音合成手册（整理中）](http://mtts.readthedocs.io/zh_CN/latest/#)  
 [中文语音合成相关思维导图（更新中）](http://naotu.baidu.com/file/efd4f580e80ed57c7bef115f2d7d5813?token=9b6dd5d2e4bc5b95)  
 
-目前实现了简单的自动文本转label程序，设计了上下文相关标注格式和对应的问题集，具体见misc文件夹，如果你想要实现中文语音合成，需要有自己的语料库（目前网络上没有开源的中文语音合成语料库）——文本，音频，韵律标注（也可以不要），音素发音时长标注，然后生成Label文件，在merlin下训练即可
+目前实现了简单的自动文本转label程序，设计了上下文相关标注格式和对应的问题集，具体见misc文件夹。
+
+如果你想要实现中文语音合成，需要有自己的语料库（目前网络上没有开源的中文语音合成语料库）——文本，音频，韵律标注（也可以不要），音素发音时长标注，然后生成Label文件，在merlin下训练即可
 
 目前用1600中文短句训练的效果见example_wav，音质不好，但能辨别出读的什么字，用更大的数据量应该可以取得更好的效果
 
 ## TODO List
-[] Forced Alignment 根据音频文件和文本生成发音时长标注
-[] 测试在更大规模数据中的效果
+* Forced Alignment 根据音频文件和文本生成发音时长标注
+* 测试在更大规模数据中的效果
 
 ## 使用指南
 ### 1.txt2label
@@ -51,7 +53,7 @@ for line in result:
 将egs/mandarin_voice复制到merlin对应文件夹下，然后根据egs/mandarin_voice/s1/README.md进行配置即可
 
 
-贡献者：
+## 贡献者：
 * Jackiexiao
 * willian56
 
