@@ -18,7 +18,9 @@ Mandarin/Chinese Text to Speech based on statistical parametric speech synthesis
 * 测试在更大规模数据中的效果
 
 ## 使用指南
-### 1.txt2label
+### 1.环境与依赖
+使用python2.7，需要安装`pip install jieba pypinyin`
+### 2.txt2label
 
 ```
 from mandarin_frontend import txt2label
@@ -49,7 +51,7 @@ for line in result:
 0 0 m^en2-sil+xx=xx@/A:xx-xx^xx@/B:xx+xx@xx^xx^xx+xx#xx-xx-/C:xx_xx^xx#xx+xx+xx&/D:xx=xx!xx@xx-xx&/E:xx|xx-xx@xx#xx&xx!xx-xx#/F:xx^xx=xx_xx-xx!
 ```
 
-### 2.merlin脚本
+### 3.merlin脚本
 将egs/mandarin_voice复制到merlin对应文件夹下，然后根据egs/mandarin_voice/s1/README.md进行配置即可
 
 
