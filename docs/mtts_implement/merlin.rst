@@ -40,7 +40,7 @@ Anaconda `国内镜像下载地址<https://mirrors.tuna.tsinghua.edu.cn/help/ana
 
 ::
 
-    sudo apt-get install csh cmake
+    sudo apt-get install csh cmake realpath autotools-dev automake
     pip install numpy scipy matplotlib lxml theano bandmat
     git clone https://github.com/CSTR-Edinburgh/merlin.git
     cd merlin/tools
