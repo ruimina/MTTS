@@ -11,16 +11,18 @@ Mandarin/Chinese Text to Speech based on statistical parametric speech synthesis
 
 如果你想要实现中文语音合成，需要有自己的语料库（目前网络上没有开源的中文语音合成语料库）——文本，音频，韵律标注（也可以不要），音素发音时长标注，然后生成Label文件，在merlin下训练即可
 
-目前用1600中文短句训练的效果见example_wav，音质不好，但能辨别出读的什么字，用更大的数据量应该可以取得更好的效果
+目前用1600中文短句训练的效果见example_file，音质不好，但能辨别出读的什么字，用更大的数据量应该可以取得更好的效果
 
 ## TODO List
-* Forced Alignment 根据音频文件和文本生成发音时长标注
-* 测试在更大规模数据中的效果
+- [ ] Forced Alignment 根据音频文件和文本生成发音时长标注
+- [ ] 测试在更大规模数据中的效果
 
 ## 使用指南
 ### 1.环境与依赖
 使用python2.7，需要安装`pip install jieba pypinyin`
 ### 2.txt2label
+
+lab, sfs 样例文件参见example_file文件夹
 
 ```
 from mandarin_frontend import txt2label
@@ -32,7 +34,7 @@ for line in result:
 # 带韵律标记的文本也被支持
 # result = txt2label('香港#1和#1澳门')
 
-# 可加入发音时长文件
+# 可加入发音时长文件，则lab中会附加上发音时长
 # result = txt2label('香港和澳门', sfsfile='example.sfs')
 ```
 
