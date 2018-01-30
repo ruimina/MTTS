@@ -147,7 +147,8 @@ def force_align(txt, wavfile):
         a stands for consonant
         b stands for vowel
         d stands for silence that is shorter than 100ms
-        s stands for silence that is longer than 100ms
+        s stands for silence that is longer than 100ms and the start && end
+        silence of each sentence
     '''
     pass
 

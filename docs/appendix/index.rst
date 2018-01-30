@@ -6,6 +6,7 @@
 
     related_toolkit
     glossary
+    resource
 
 
 语音合成的有趣应用

@@ -26,7 +26,7 @@ wechat：explorerrr
 .. toctree::
     :maxdepth: 2
 
-    tutorial
+    tutorial/index
     recent_advances
     literature_review
     mtts_theory/index

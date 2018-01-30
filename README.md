@@ -57,6 +57,22 @@ for line in result:
 将egs/mandarin_voice复制到merlin对应文件夹下，然后根据egs/mandarin_voice/s1/README.md进行配置即可
 
 
+## 一些说明
+### sfs文件
+['239100 s',   
+'313000 a',   
+'400000 b'   
+'480000 s'   
+......]  
+a stands for consonant  
+b stands for vowel  
+d stands for silence that is shorter than 100ms  
+s stands for silence that is longer than 100ms and the start && end  
+silence of each sentence  
+ 
+### 韵律标注
+代码中#0表示词语的边界，#1表示韵律词，#2表示重音，#3表示韵律短语，#4表示语调短语。本项目规定词语比韵律词小，代码里自动进行了调整。当不输入韵律时也能够生成可用的label，不过合成的语音韵律感不强
+
 ## 贡献者：
 * Jackiexiao
 * willian56
