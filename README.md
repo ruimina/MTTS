@@ -11,11 +11,10 @@ Mandarin/Chinese Text to Speech based on statistical parametric speech synthesis
 
 如果你想要实现中文语音合成，需要有自己的语料库（目前网络上没有开源的中文语音合成语料库）——文本，音频，韵律标注（也可以不要），音素发音时长标注，然后生成Label文件，在merlin下训练即可
 
-目前用1600中文短句训练的效果见example_file，音质不好，但能辨别出读的什么字，用更大的数据量应该可以取得更好的效果
+目前500短句训练的效果见example_file，不过语句结尾发音有一点问题，这涉及到merlin的一个bug，晚点更新
 
 ## TODO List
 - [ ] Forced Alignment 根据音频文件和文本生成发音时长标注
-- [ ] 测试在更大规模数据中的效果
 
 ## 使用指南
 ### 1.环境与依赖

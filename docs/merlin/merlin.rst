@@ -1,4 +1,4 @@
-3.7 Merlin简要使用手册
+Merlin简要使用手册
 ==============================
 关于merlin的详细解读，可参考candlewill的gist https://gist.github.com/candlewill?direction=asc&sort=updated
 
