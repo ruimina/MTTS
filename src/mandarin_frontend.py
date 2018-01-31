@@ -75,8 +75,8 @@ def txt2label(txt, wavfile=None, sfsfile=None, style='default'):
     assert wavfile == None, 'wavfile currently is not supported'
     assert style == 'default', 'Currently only default style is support in txt2label'
 
-    # del all Chinese punctuation
-    punctuation = "·！？｡＂＃＄％＆＇（）＊＋，－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘’‛“”„‟…‧﹏."
+    # del all Chinese punctuation 
+    punctuation = "·！？｡＂＃＄％＆＇（）＊＋，－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃《》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘’‛“”„‟…‧﹏."
     punctuation  = punctuation.decode("utf-8")
     txt = re.sub(r'[%s]'%punctuation, '', txt.decode('utf-8')).encode('utf-8')
 
