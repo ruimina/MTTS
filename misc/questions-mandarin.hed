@@ -168,6 +168,7 @@ QS "C-eng"   {*-eng2+*}
 QS "C-ing"   {*-ing2+*}
 QS "C-ueng"  {*-ueng2+*}
 QS "C-ong"   {*-ong2+*}
+QS "C-iong"  {*-iong2+*}
 QS "C-a"     {*-a3+*}
 QS "C-i"     {*-i3+*}
 QS "C-u"     {*-u3+*}

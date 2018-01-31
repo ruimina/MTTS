@@ -11,7 +11,7 @@ Mandarin/Chinese Text to Speech based on statistical parametric speech synthesis
 
 如果你想要实现中文语音合成，需要有自己的语料库（目前网络上没有开源的中文语音合成语料库）——文本，音频，韵律标注（也可以不要），音素发音时长标注，然后生成Label文件，在merlin下训练即可
 
-目前500短句训练的效果见example_file，不过语句结尾发音有一点问题，这涉及到merlin的一个bug，晚点更新
+目前500短句训练的效果见example_file下的音频文件
 
 ## TODO List
 - [ ] Forced Alignment 根据音频文件和文本生成发音时长标注
@@ -71,6 +71,9 @@ silence of each sentence
  
 ### 韵律标注
 代码中#0表示词语的边界，#1表示韵律词，#2表示重音，#3表示韵律短语，#4表示语调短语。本项目规定词语比韵律词小，代码里自动进行了调整。当不输入韵律时也能够生成可用的label，不过合成的语音韵律感不强
+
+### Merlin已知bug
+* 在src/frontend/label_normalisation.py文件中 `frame_number = int((end_time - start_time) / 50000)` 修改为`frame_number = int(end_time/50000) - int(start_time / 50000)` 因为我的数据不是以帧为单位的，数据的时间信息不是50000整
 
 ## 贡献者：
 * Jackiexiao

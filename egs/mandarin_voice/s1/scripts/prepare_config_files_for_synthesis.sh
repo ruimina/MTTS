@@ -179,6 +179,18 @@ then
     $SED -i s#'minimum_phase_order\s*:.*'#'minimum_phase_order: 511'# $acoustic_config_file
     $SED -i s#'fw_alpha\s*:.*'#'fw_alpha: 0.58'# $acoustic_config_file
 
+elif [ "$SamplingFreq" == "22050" ]
+then
+    $SED -i s#'framelength\s*:.*'#'framelength: 1024'# $acoustic_config_file
+    $SED -i s#'minimum_phase_order\s*:.*'#'minimum_phase_order: 511'# $acoustic_config_file
+    $SED -i s#'fw_alpha\s*:.*'#'fw_alpha: 0.65'# $acoustic_config_file
+
+elif [ "$SamplingFreq" == "44100" ]
+then
+    $SED -i s#'framelength\s*:.*'#'framelength: 2048'# $acoustic_config_file
+    $SED -i s#'minimum_phase_order\s*:.*'#'minimum_phase_order: 1023'# $acoustic_config_file
+    $SED -i s#'fw_alpha\s*:.*'#'fw_alpha: 0.76'# $acoustic_config_file
+
 elif [ "$SamplingFreq" == "48000" ]
 then
     if [ "$Vocoder" == "WORLD" ]
@@ -190,6 +202,7 @@ then
         $SED -i s#'minimum_phase_order\s*:.*'#'minimum_phase_order: 2047'# $acoustic_config_file
     fi
     $SED -i s#'fw_alpha\s*:.*'#'fw_alpha: 0.77'# $acoustic_config_file
+
 else
     echo "This sampling frequency ($SamplingFreq) never tested before...please configure yourself!!"
 fi
