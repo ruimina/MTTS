@@ -27,6 +27,7 @@ wechat：explorerrr
     :maxdepth: 2
 
     tutorial/index
+    merlin/index
     recent_advances
     literature_review
     mtts_theory/index
