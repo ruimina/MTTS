@@ -12,8 +12,12 @@ if [ "$train_tts" = true ]; then
     # step 2: prepare labels
     ./02_prepare_labels.sh database/labels database/prompt-lab
 
-    # step 3: extract acoustic features
-    ./03_prepare_acoustic_features.sh database/wav database/feats
+    if [ ! -d 'database/feats' ]; then
+        # step 3: extract acoustic features
+        ./03_prepare_acoustic_features.sh database/wav database/feats
+    else
+        echo "---Step3 database/feats dir exists! skip this step!----"
+    fi
 
     # step 4: prepare config files for training and testing
     ./04_prepare_conf_files.sh conf/global_settings.cfg

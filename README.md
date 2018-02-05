@@ -1,4 +1,4 @@
-# MTTS 中文语音合成
+# MTTS基于Merlin的中文语音合成
 
 **ON_DEVELOPMENT**
 
@@ -11,11 +11,10 @@ Mandarin/Chinese Text to Speech based on statistical parametric speech synthesis
 
 如果你想要实现中文语音合成，需要有自己的语料库（目前网络上没有开源的中文语音合成语料库）——文本，音频，韵律标注（也可以不要），音素发音时长标注，然后生成Label文件，在merlin下训练即可
 
-目前用1600中文短句训练的效果见example_file，音质不好，但能辨别出读的什么字，用更大的数据量应该可以取得更好的效果
+目前500短句训练的效果见example_file下的音频文件
 
 ## TODO List
 - [ ] Forced Alignment 根据音频文件和文本生成发音时长标注
-- [ ] 测试在更大规模数据中的效果
 
 ## 使用指南
 ### 1.环境与依赖
@@ -72,6 +71,11 @@ silence of each sentence
  
 ### 韵律标注
 代码中#0表示词语的边界，#1表示韵律词，#2表示重音，#3表示韵律短语，#4表示语调短语。本项目规定词语比韵律词小，代码里自动进行了调整。当不输入韵律时也能够生成可用的label，不过合成的语音韵律感不强
+
+### Merlin已知bug
+* 在merlin/src/frontend/label_normalisation.py中，在903行后添加（函数 def wildcards2regex 中） ` question = question.replace('\\?', '.')` 这样可以支持对HTS风格的问题集中?的转换(本项目问题集使用了?）
+* 在src/frontend/label_normalisation.py文件中 `frame_number = int((end_time - start_time) / 50000)` 修改为`frame_number = int(end_time/50000) - int(start_time / 50000)` 因为我的数据不是以帧为单位的，数据的时间信息不是50000整
+* 如果使用44100的采样频率，应该修改所有conf中的framelength 和fw_alpha 为 framelength = 2048 fw_alpha = 0.76 （参数是world提取44100采样频率音频所使用的参数
 
 ## 贡献者：
 * Jackiexiao

@@ -9,6 +9,5 @@
     prosody_processing
     audio_processing
     hmm_training
-    merlin
     vocoder
     speech_synthesis
